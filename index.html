@@ -208,6 +208,99 @@
   .pauseHint { margin-top:14px; font-size:11px; color:rgba(143,183,217,.5); }
   #countdown { position:absolute; left:0; top:0; width:100%; height:100%; z-index:26; display:flex; align-items:center; justify-content:center;
     pointer-events:none; font-size:120px; font-weight:900; color:#eaf6ff; text-shadow:0 0 40px rgba(90,190,255,.9); }
+
+  /* ===== v4.2 科普页 ===== */
+  #sciencePanel { position:absolute; left:0; top:0; width:100%; height:100%; z-index:40; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(ellipse at center, rgba(6,16,32,.9), rgba(3,8,16,.97)); }
+  .sciBox { width:960px; max-width:96%; max-height:96%; overflow:auto; background:linear-gradient(160deg,#101f38,#0a1424);
+    border:1px solid rgba(120,180,255,.3); border-radius:18px; padding:26px 34px; text-align:center; box-shadow:0 12px 60px rgba(0,0,0,.7); }
+  .sciBox h1 { color:#eaf6ff; font-size:26px; letter-spacing:2px; margin-bottom:20px; }
+  .sciGrid { display:flex; align-items:stretch; justify-content:center; gap:10px; margin-bottom:18px; }
+  .sciCard { flex:1; max-width:250px; padding:16px 14px; border-radius:14px; text-align:center; }
+  .sciCard.norm { background:rgba(127,224,160,.1); border:1px solid rgba(127,224,160,.4); }
+  .sciCard.all { background:rgba(255,90,110,.1); border:1px solid rgba(255,90,110,.4); }
+  .sciCard.enz { background:rgba(127,196,255,.1); border:1px solid rgba(127,196,255,.4); }
+  .sciCell { position:relative; width:64px; height:64px; margin:0 auto 8px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px;
+    background:radial-gradient(circle at 35% 30%, #fff, #d0e8ff); box-shadow:0 0 18px rgba(140,220,255,.4); }
+  .sciCell .asns { position:absolute; bottom:-8px; left:50%; transform:translateX(-50%); font-size:11px; font-weight:700; white-space:nowrap;
+    color:#062036; background:#fff; border-radius:8px; padding:1px 6px; }
+  .sciCell.all { background:radial-gradient(circle at 35% 30%, #ffd9de, #ff8a96); box-shadow:0 0 18px rgba(255,90,110,.4); }
+  .sciEnzyme { font-size:44px; margin:8px auto 6px; }
+  .sciName { color:#eaf6ff; font-weight:800; font-size:15px; margin-bottom:8px; }
+  .sciCard p { color:#b9d4ec; font-size:12px; line-height:1.8; text-align:left; }
+  .sciCard p b { color:#ffd76a; }
+  .sciArrow { display:flex; align-items:center; font-size:26px; color:#7fc4ff; }
+  .sciFlow { color:#d8ecff; font-size:14px; margin-bottom:10px; }
+  .sciFlow b { color:#ffd76a; }
+  .sciSummary { color:#ffe9b0; font-size:14px; background:rgba(255,215,106,.08); border:1px dashed rgba(255,215,106,.4);
+    border-radius:10px; padding:10px 14px; margin-bottom:18px; }
+  .sciSummary b { color:#ffd76a; }
+
+  /* ===== v4.2 教程页 ===== */
+  #tutorialPanel { position:absolute; left:0; top:0; width:100%; height:100%; z-index:41; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(ellipse at center, rgba(6,16,32,.92), rgba(3,8,16,.97)); }
+  .tutBox { width:860px; max-width:96%; max-height:96%; overflow:auto; background:linear-gradient(160deg,#101f38,#0a1424);
+    border:1px solid rgba(120,180,255,.3); border-radius:18px; padding:26px 34px; text-align:center; box-shadow:0 12px 60px rgba(0,0,0,.7); }
+  .tutBox h1 { color:#eaf6ff; font-size:26px; letter-spacing:4px; margin-bottom:22px; }
+  .tutKeys { display:flex; justify-content:center; gap:48px; margin-bottom:22px; }
+  .keyGroup { text-align:center; }
+  .keyLabel { color:#7fa8cc; font-size:13px; margin-bottom:10px; }
+  .keyPad { display:grid; grid-template-columns:repeat(3,52px); grid-auto-rows:52px; gap:6px; justify-content:center; }
+  .key { display:flex; align-items:center; justify-content:center; font-size:17px; font-weight:800; color:#eaf6ff;
+    background:rgba(255,255,255,.08); border:1px solid rgba(160,210,255,.4); border-radius:9px;
+    box-shadow:0 3px 0 rgba(0,0,0,.35); }
+  .key.wide { grid-column:span 3; font-size:15px; letter-spacing:2px; }
+  .mousePad { width:84px; height:84px; margin:0 auto; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:40px;
+    background:rgba(255,255,255,.08); border:1px solid rgba(160,210,255,.4); box-shadow:0 4px 0 rgba(0,0,0,.35); }
+  .keySub { margin-top:10px; color:#7fa8cc; font-size:12px; }
+  .tutGoal { color:#ffe9b0; font-size:14px; background:rgba(255,215,106,.08); border:1px dashed rgba(255,215,106,.4);
+    border-radius:10px; padding:10px 14px; margin-bottom:20px; }
+  .tutGoal b { color:#ffd76a; }
+
+  /* ===== v4.2 排行榜 / 存档管理 ===== */
+  #leaderList { text-align:left; max-height:300px; overflow:auto; margin:6px 0 12px; }
+  .ldRow { display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:9px; margin-bottom:5px;
+    background:rgba(255,255,255,.04); border-left:3px solid rgba(127,196,255,.45); font-size:13px; color:#cfe8ff; }
+  .ldRow.me { background:rgba(255,215,106,.12); border-left-color:#ffd76a; box-shadow:0 0 10px rgba(255,215,106,.2); }
+  .ldRow .rk { width:26px; font-weight:800; color:#ffd76a; }
+  .ldRow .rv { font-weight:700; }
+  .ldRow .rs { margin-left:auto; color:#7fa8cc; font-size:11px; text-align:right; }
+  #saveInfo { text-align:left; color:#b9d4ec; font-size:13px; line-height:2; margin-bottom:12px; padding:10px 14px;
+    background:rgba(255,255,255,.04); border-radius:10px; }
+
+  /* ===== v4.2 GOD MODE 标识 ===== */
+  #godBadge { position:absolute; left:14px; top:70px; z-index:8; display:none; align-items:center; gap:6px; padding:5px 12px;
+    background:rgba(255,215,106,.15); border:1px solid #ffd76a; border-radius:14px; color:#ffd76a; font-size:13px; font-weight:800;
+    text-shadow:0 0 8px rgba(255,215,106,.6); }
+
+  /* ===== v4.2 移动端触控层 ===== */
+  #touchUI { position:absolute; left:0; top:0; width:100%; height:100%; z-index:15; display:none; pointer-events:none; }
+  #touchUI.on { display:block; }
+  #joystickZone { position:absolute; left:0; top:0; width:50%; height:100%; pointer-events:auto; }
+  #joyBase { position:absolute; width:120px; height:120px; border-radius:50%; border:2px solid rgba(140,200,255,.45);
+    background:rgba(120,180,255,.12); transform:translate(-50%,-50%); pointer-events:none; display:none; }
+  #joyKnob { position:absolute; width:48px; height:48px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #9fd8ff, #3f7fd8);
+    transform:translate(-50%,-50%); box-shadow:0 0 14px rgba(80,160,255,.5); pointer-events:none; display:none; }
+  #ultZone { position:absolute; left:20px; bottom:180px; width:160px; height:84px; pointer-events:auto; display:flex; align-items:center; justify-content:center; }
+  #ultBtn { width:64px; height:64px; border-radius:50%; border:2px solid rgba(87,194,255,.7); background:rgba(29,111,208,.5);
+    color:#dff2ff; font-size:26px; display:flex; align-items:center; justify-content:center; }
+  #shootZone { position:absolute; left:50%; top:0; width:50%; height:100%; pointer-events:auto; }
+  #dashBtnT { position:absolute; right:20px; bottom:20px; width:84px; height:84px; border-radius:50%; pointer-events:auto;
+    border:2px solid rgba(140,200,255,.5); background:rgba(63,127,216,.45); color:#dff2ff; font-size:14px; font-weight:800;
+    display:flex; align-items:center; justify-content:center; }
+  #pauseBtnT { position:absolute; right:18px; top:14px; width:52px; height:52px; border-radius:50%; pointer-events:auto;
+    border:2px solid rgba(140,200,255,.45); background:rgba(10,24,44,.5); color:#cfe8ff; font-size:22px;
+    display:flex; align-items:center; justify-content:center; }
+  #shootHint { position:absolute; right:24px; bottom:120px; color:rgba(143,183,217,.6); font-size:11px; text-align:right; }
+  .touchFade { transition:opacity .5s; }
+  #touchUI.faded #joystickZone, #touchUI.faded #ultZone, #touchUI.faded #shootZone, #touchUI.faded #dashBtnT, #touchUI.faded #shootHint, #touchUI.faded #pauseBtnT { opacity:.15; }
+
+  /* ===== v4.2 面板定位（排行榜 / 存档管理） ===== */
+  #leaderPanel, #savePanel { position:absolute; left:0; top:0; width:100%; height:100%; z-index:42; display:none;
+    align-items:center; justify-content:center; background:radial-gradient(ellipse at center, rgba(6,16,32,.85), rgba(3,8,16,.95)); }
+  #cheatHint { position:absolute; top:96px; left:50%; transform:translateX(-50%); z-index:43; color:#ffd76a; font-size:16px; font-weight:800;
+    text-shadow:0 0 12px rgba(255,215,106,.8), 0 0 30px rgba(255,215,106,.4); letter-spacing:1px; transition:opacity .6s; }
+  #touchUI { pointer-events:none; }
 </style>
 </head>
 <body>
@@ -221,35 +314,127 @@
     <canvas id="titleBg" width="1200" height="800"></canvas>
     <div class="titleContent">
       <img src="img/team_logo.jpg" id="teamLogo" alt="制作团队 logo">
-      <h1 class="titleMain">饥饿围城：ALL清除计划</h1>
-      <div class="titleSub">天冬酰胺酶 · 微观战争 · 策略生存</div>
+      <h1 class="titleMain" id="titleMain">饥饿围城：ALL清除计划</h1>
+      <div class="titleSub" id="titleSub">天冬酰胺酶 · 微观战争 · 策略生存</div>
       <div class="titleBtns">
         <button class="tBtn active" id="tStart">▶ 开始游戏</button>
         <button class="tBtn" id="tEndless">♾️ 无尽模式</button>
         <button class="tBtn" id="tExit">✕ 退出游戏</button>
       </div>
     </div>
+    <div id="cheatHint" style="opacity:0"></div>
     <div class="titleFooter">
-      <div class="tfLeft">v4.1 · iGEM2026 UCS-B Asprout 出品</div>
+      <div class="tfLeft" id="titleVersion">v4.2 · iGEM2026 UCS-B Asprout 出品</div>
       <div class="tfRight">
         <span class="tfHint">WASD移动 | 鼠标射击 | 空格冲刺</span>
+        <button class="tfTeamBtn" id="btnLang">🌐 语言/Language</button>
+        <button class="tfTeamBtn" id="btnLeader">🏆 排行榜</button>
+        <button class="tfTeamBtn" id="btnMobile">📱 移动端</button>
+        <button class="tfTeamBtn" id="btnSave">💾 存档管理</button>
         <button class="tfTeamBtn" id="teamBtn">制作团队</button>
       </div>
     </div>
     <div id="teamModal" style="display:none">
       <div class="teamModalBox">
-        <h3>制作团队</h3>
+        <h3 id="teamModalTitle">制作团队</h3>
         <p>Zexuan Wu</p>
-        <p>Deepseek-v4 flash0731（AI程序员 / 联合开发者）</p>
+        <p id="teamModalSub">Deepseek-v4 flash0731（AI程序员 / 联合开发者）</p>
       </div>
     </div>
   </div>
 
+  <!-- v4.2 科学科普页（首次进入强制，图文结合） -->
+  <div id="sciencePanel" style="display:none">
+    <div class="sciBox">
+      <h1 id="sciTitle">🔬 天冬酰胺酶如何治疗 ALL？</h1>
+      <div class="sciGrid">
+        <div class="sciCard norm">
+          <div class="sciCell"><div class="cellCore">😊</div><div class="asns">ASNS ✓</div></div>
+          <div class="sciName" data-i18n="sci_normName">正常细胞</div>
+          <p data-i18n="sci_normDesc">表达天冬酰胺合成酶（ASNS），能<b>内源性合成天冬酰胺（Asn）</b>，满足自身营养需求。</p>
+        </div>
+        <div class="sciArrow">➜</div>
+        <div class="sciCard all">
+          <div class="sciCell"><div class="cellCore">😈</div><div class="asns">ASNS ✗</div></div>
+          <div class="sciName" data-i18n="sci_allName">ALL 癌细胞</div>
+          <p data-i18n="sci_allDesc">因 <b>ASNS 基因沉默</b> 丧失合成能力，<b>完全依赖外源性天冬酰胺</b> 生存。</p>
+        </div>
+        <div class="sciArrow">➜</div>
+        <div class="sciCard enz">
+          <div class="sciEnzyme">🧬</div>
+          <div class="sciName" data-i18n="sci_enzName">天冬酰胺酶</div>
+          <p data-i18n="sci_enzDesc">催化天冬酰胺水解为<b>天冬氨酸和氨</b>，快速耗竭血清中的游离天冬酰胺。</p>
+        </div>
+      </div>
+      <p class="sciFlow" data-i18n="sci_flow">Asn 被耗竭 → ALL 细胞无法合成 → <b>启动凋亡</b>；正常细胞不受影响</p>
+      <p class="sciSummary" data-i18n="sci_summary">🎮 <b>本游戏模拟上述机制：</b>操控天冬酰胺酶分解天冬酰胺（金色补给球），切断 ALL 细胞的营养来源。</p>
+      <button class="pbtn main" id="sciOk">明白了</button>
+    </div>
+  </div>
+
+  <!-- v4.2 操作教程页（紧随科普之后，大图展示操作） -->
+  <div id="tutorialPanel" style="display:none">
+    <div class="tutBox">
+      <h1 data-i18n="tut_title">操作教程</h1>
+      <div class="tutKeys">
+        <div class="keyGroup">
+          <div class="keyLabel" data-i18n="tut_move">移动</div>
+          <div class="keyPad">
+            <div></div><div class="key">W</div><div></div>
+            <div class="key">A</div><div class="key">S</div><div class="key">D</div>
+          </div>
+          <div class="keySub" data-i18n="keySubMove">WASD / 方向键</div>
+        </div>
+        <div class="keyGroup">
+          <div class="keyLabel" data-i18n="tut_shoot">射击</div>
+          <div class="mousePad">🖱️</div>
+          <div class="keySub" data-i18n="keySubShoot">鼠标左键 / J</div>
+        </div>
+        <div class="keyGroup">
+          <div class="keyLabel" data-i18n="tut_dash">冲刺</div>
+          <div class="keyPad"><div class="key wide">Space</div></div>
+          <div class="keySub" data-i18n="keySubDash">空格 / Shift</div>
+        </div>
+      </div>
+      <p class="tutGoal" data-i18n="tut_goal">🎯 <b>游戏目标：</b>追赶并触碰金色补给球拦截营养，饿死癌细胞；抢夺补给避免漏球，控制出血风险避免失败。</p>
+      <button class="pbtn main" id="tutStart">开始战斗</button>
+    </div>
+  </div>
+
+  <!-- v4.2 排行榜 -->
+  <div id="leaderPanel" style="display:none">
+    <div class="panel">
+      <h1 id="leaderTitle">🏆 无尽模式排行榜</h1>
+      <div class="sub" id="leaderSub">前 10 名 · 波次优先 · 得分次之</div>
+      <div id="leaderList"></div>
+      <div class="menuBtns">
+        <button class="pbtn ghost" id="leaderReset">🗑️ 重置记录</button>
+        <button class="pbtn ghost" id="leaderBack">← 返回</button>
+      </div>
+      <div class="errline"></div>
+    </div>
+  </div>
+
+  <!-- v4.2 存档管理 -->
+  <div id="savePanel" style="display:none">
+    <div class="panel">
+      <h1 id="saveTitle">💾 存档管理</h1>
+      <div class="sub" id="saveSub">管理本地进度、语言与科普标记</div>
+      <div id="saveInfo"></div>
+      <div class="menuBtns">
+        <button class="pbtn ghost" id="saveReset">🗑️ 重置存档</button>
+        <button class="pbtn ghost" id="saveBack">← 返回</button>
+      </div>
+      <div class="errline" id="saveErrLine"></div>
+    </div>
+  </div>
+
   <!-- 顶部状态 -->
+  <div id="godBadge">🛡️ GOD MODE</div>
   <div id="hudTop">
-    <button class="pbtn ghost" id="exitBtn" style="display:none; position:absolute; right:12px; top:70px; padding:4px 12px; font-size:12px; z-index:7;">✕ 退出</button>
+    <button class="pbtn ghost" id="exitBtn" style="display:none; position:absolute; right:12px; top:70px; padding:4px 12px; font-size:12px; z-index:7;" data-i18n="hudExit">✕ 退出</button>
     <div class="gauge" id="asnGauge">
-      <div class="gauge-label">
+      <div class="gauge-label" data-i18n="hudAsn">
         <svg viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="16" rx="3" stroke="#7fd0ff" stroke-width="1.6"/><circle cx="12" cy="19" r="3.4" stroke="#7fd0ff" stroke-width="1.6"/></svg>
         血清Asn
       </div>
@@ -258,7 +443,7 @@
     </div>
 
     <div class="gauge" id="riskGauge">
-      <div class="gauge-label">
+      <div class="gauge-label" data-i18n="hudRisk">
         <svg viewBox="0 0 24 24" fill="none"><path d="M4 13c2-4 4-6 6-6s4 2 5 5c1-2 2.5-4 5-4" stroke="#ff7a7a" stroke-width="1.8" stroke-linecap="round"/><path d="M4 16c2-3 4-4.5 6-4.5s3.5 1 4.5 3" stroke="#ff7a7a" stroke-width="1.4" stroke-linecap="round" opacity=".7"/></svg>
         出血风险
       </div>
@@ -269,29 +454,29 @@
     <div id="clock"><span id="timeNum">60</span><span class="clock-unit">s</span></div>
     <div id="lvlTag">第1关 · 诱导期</div>
 
-    <div id="missBox"><span class="lbl">漏球</span><span id="missText">0 / 3</span><div id="missDots"></div></div>
+    <div id="missBox"><span class="lbl" data-i18n="hudMiss">漏球</span><span id="missText">0 / 3</span><div id="missDots"></div></div>
 
-    <div id="killBox"><span class="lbl">凋亡</span><b id="killNum">0</b></div>
+    <div id="killBox"><span class="lbl" data-i18n="hudKill">凋亡</span><b id="killNum">0</b></div>
   </div>
 
   <!-- 底部操作 -->
   <div id="hudBottom">
     <div id="manaBox">
-      <span class="lbl"><span>药物活性</span><span id="manaNum">100</span></span>
+      <span class="lbl"><span data-i18n="hudMana">药物活性</span><span id="manaNum">100</span></span>
       <div id="manaBar"><div id="manaFill"></div></div>
     </div>
     <button class="skillBtn" id="dashBtn" title="冲刺（空格 / Shift）">
-      <span class="btnTag">冲刺</span>
+      <span class="btnTag" data-i18n="dashTag">冲刺</span>
       <svg viewBox="0 0 24 24" fill="none"><path d="M3 12h14M13 6l6 6-6 6" stroke="#dff2ff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span class="cd">✓</span>
     </button>
     <button class="skillBtn" id="shootBtn" title="射击（J）">
-      <span class="btnTag">射击</span>
+      <span class="btnTag" data-i18n="shootTag">射击</span>
       <svg viewBox="0 0 24 24" fill="none"><path d="M4 20 20 4M12 6l6 6M15 3l6 6" stroke="#d8fff0" stroke-width="2.2" stroke-linecap="round"/></svg>
       <span class="cd">✓</span>
     </button>
     <button class="skillBtn" id="skillBtn" title="爆发技能（Q）">
-      <span class="btnTag">爆发</span>
+      <span class="btnTag" data-i18n="ultTag">爆发</span>
       <svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4.5 13.5H11L9.5 22 19 9.5h-6.5L13 2z" fill="#fff" stroke="#fff" stroke-width="1"/></svg>
       <span class="cd">30</span>
     </button>
@@ -308,6 +493,7 @@
       <h1>饥饿围城：ALL清除计划</h1>
       <div class="sub">v3.1 · 天冬酰胺酶 vs ALL · 九关双难度策略对抗</div>
       <div id="diffTabs">
+        <button class="diffTab" id="tabEasy">简单</button>
         <button class="diffTab active" id="tabNormal">普通</button>
         <button class="diffTab" id="tabHard">困难</button>
       </div>
@@ -315,8 +501,9 @@
       <div class="menuBtns">
         <button class="pbtn ghost" id="endlessBtn">♾️ 无尽模式</button>
         <button class="pbtn ghost" id="bestiaryBtn">📖 敌人图鉴</button>
+        <button class="pbtn ghost" id="tutAgainBtn">📖 再次观看教程</button>
       </div>
-      <div class="menuHint">
+      <div class="menuHint" id="menuHint">
         操作：<b>WASD/方向键</b> 移动（面朝）· <b>空格/Shift</b> 冲刺（第2关解锁）· <b>J</b>/<b>鼠标左键</b> 射击（第3关解锁，鼠标独立控制方向）· <b>Q</b> 爆发技能<br>
         触碰金色补给球拦截（全场敌军饥饿+15）· 漏球3次或出血风险100%失败 · 绿色光柱=救援信号弹（赶到+饥饿/不到-饥饿）
       </div>
@@ -367,6 +554,15 @@
     </div>
   </div>
   <div id="countdown" style="display:none">3</div>
+
+  <!-- v4.2 移动端触控层 -->
+  <div id="touchUI">
+    <div id="joystickZone"><div id="joyBase"></div><div id="joyKnob"></div></div>
+    <div id="ultZone"><div id="ultBtn">⚡</div></div>
+    <div id="shootZone"><div id="shootHint">右半屏滑动射击 · 滑动 30px 射箭</div></div>
+    <div id="dashBtnT">💨<br>冲刺</div>
+    <div id="pauseBtnT">⏸</div>
+  </div>
 </div>
 
 <script>
@@ -405,6 +601,110 @@ var CFG = {
   signal: { min: 25, max: 35, dur: 3, radius: 150, maxOnField: 3, gain: 10, penalty: 5, riskDrop: 5 }
 };
 
+/* ================= v4.2 语言切换 ================= */
+var LANG = 'zh';
+var I18N = {
+  zh: {
+    title_main: '饥饿围城：ALL清除计划', title_sub: '天冬酰胺酶 · 微观战争 · 策略生存',
+    tStart: '▶ 开始游戏', tEndless: '♾️ 无尽模式', tExit: '✕ 退出游戏',
+    btnLang: '🌐 语言/Language', btnLeader: '🏆 排行榜', btnMobile: '📱 移动端', btnMobileOff: '📱 退出移动端', btnSave: '💾 存档管理', teamBtn: '制作团队',
+    teamModalTitle: '制作团队', teamModalSub: 'Deepseek-v4 flash0731（AI程序员 / 联合开发者）',
+    titleHint: 'WASD移动 | 鼠标射击 | 空格冲刺', lockEndless: '🔒 需通关全部 9 关普通难度解锁',
+    exitBlocked: '浏览器限制无法自动关闭窗口，请手动关闭',
+    menuTitle: '饥饿围城：ALL清除计划', menuSub: 'v4.2 · 天冬酰胺酶 vs ALL · 九关策略对抗',
+    tabEasy: '简单', tabNormal: '普通', tabHard: '困难', easyTip: '宽松数值 · 通关不解锁后续',
+    endlessBtn: '♾️ 无尽模式', bestiaryBtn: '📖 敌人图鉴', tutAgain: '📖 再次观看教程', backSelect: '← 返回选关',
+    hudAsn: '血清Asn', hudRisk: '出血风险', hudMiss: '漏球', hudKill: '凋亡', hudMana: '药物活性', hudExit: '✕ 退出',
+    resAgain: '再来一局', winBody: '敌军因缺乏营养而饥饿凋亡。', failBody: '癌细胞突破了营养封锁。重新制定策略：优先拦截补给球、谨慎释放大招、利用冲刺与射击干扰特殊敌人。',
+    keySubMove: 'WASD / 方向键', keySubShoot: '鼠标左键 / J', keySubDash: '空格 / Shift',
+    dashTag: '冲刺', shootTag: '射击', ultTag: '爆发',
+    hint1: '<b>WASD / 方向键</b> 移动（面朝）· <b class="b">空格 / Shift</b> 冲刺 · <b class="g">J</b> 或 <b class="g">鼠标左键</b> 射击',
+    hint2: '鼠标光标独立控制射击方向 · <b class="c">Q</b> 大招（5s 强化：三连射+移速+20%）· 绿色光柱 = 救援信号弹',
+    lvlTagFmt: '第{n}关 · {stage}', endlessTagFmt: '♾️ 第{n}波', bossTag: ' · BOSS',
+    sci_title: '🔬 天冬酰胺酶如何治疗 ALL？',
+    sci_normName: '正常细胞', sci_normDesc: '表达天冬酰胺合成酶（ASNS），能<b>内源性合成天冬酰胺（Asn）</b>，满足自身营养需求。',
+    sci_allName: 'ALL 癌细胞', sci_allDesc: '因 <b>ASNS 基因沉默</b> 丧失合成能力，<b>完全依赖外源性天冬酰胺</b> 生存。',
+    sci_enzName: '天冬酰胺酶', sci_enzDesc: '催化天冬酰胺水解为<b>天冬氨酸和氨</b>，快速耗竭血清中的游离天冬酰胺。',
+    sci_flow: 'Asn 被耗竭 → ALL 细胞无法合成 → <b>启动凋亡</b>；正常细胞不受影响',
+    sci_summary: '🎮 <b>本游戏模拟上述机制：</b>操控天冬酰胺酶分解天冬酰胺（金色补给球），切断 ALL 细胞的营养来源。',
+    sciOk: '明白了',
+    tut_title: '操作教程', tut_move: '移动', tut_shoot: '射击', tut_dash: '冲刺',
+    tut_goal: '🎯 <b>游戏目标：</b>追赶并触碰金色补给球拦截营养，饿死癌细胞；抢夺补给避免漏球，控制出血风险避免失败。',
+    tutStart: '开始战斗',
+    leaderTitle: '🏆 无尽模式排行榜', leaderSub: '前 10 名 · 波次优先 · 得分次之',
+    leaderReset: '🗑️ 重置记录', leaderBack: '← 返回', emptyLeader: '暂无记录，去无尽模式创造佳绩吧！',
+    ldMe: '（我）', ldWaves: '波', ldScore: '得分', ldKills: '击杀', ldSaves: '救援', ldDate: '日期',
+    leaderResetConfirm: '确定重置排行榜记录？此操作不可恢复！', saveBlockedGod: '（无敌模式中：记录未保存）',
+    saveTitle: '💾 存档管理', saveSub: '管理本地进度、语言与科普标记',
+    saveReset: '🗑️ 重置存档', saveBack: '← 返回', saveResetConfirm: '确定重置全部存档？进度、排行榜、语言与科普标记将全部清除！',
+    saveInfoFmt: '已通关普通关卡：{c}<br>已通关困难关卡：{h}<br>无尽最高分：{b}',
+    pauseTitle: '游戏暂停', pResume: '继续', pRestart: '重开', pQuit: '退出', pYes: '确认', pNo: '取消',
+    pConfirmRestart: '确定重新开始当前{m}？', pConfirmQuit: '确定退出到选关页面？',
+    pauseHint: '↑↓ 切换 · Enter 确认 · ESC 关闭',
+    winTitle: '治疗成功！', failTitle: '治疗失败',
+    resNext: '下一关 ▶', resAllClear: '🎉 全部通关', resRetry: '重试本关', resBack: '返回选关',
+    resSubFmt: '第{n}关（{d}）已通关 · {s}',
+    menuHintA: '操作：<b>WASD/方向键</b> 移动（面朝）· <b>空格/Shift</b> 冲刺（第2关解锁）· <b>J</b>/<b>鼠标左键</b> 射击（第3关解锁，鼠标独立控制方向）· <b>Q</b> 爆发技能',
+    menuHintB: '触碰金色补给球拦截（全场敌军饥饿+15）· 漏球3次或出血风险100%失败 · 绿色光柱=救援信号弹（赶到+饥饿/不到-饥饿）',
+    statKills: '凋亡癌细胞', statIntercepts: '补给拦截', statMisses: '耐药事件',
+    endlessEndTitle: '无尽模式结束', endlessScore: '本局得分', endlessBest: '历史最高分', endlessWave: '最终波次', endlessKills: '击杀数',
+    cheatUnlock: '✨ 作弊码生效：全部关卡已解锁！', cheatGodOn: '✨ 作弊码生效：无敌模式开启！',
+    cheatGodOff: '无敌模式已关闭', godBlockSave: '（GOD MODE：本局进度未保存）',
+    mShootHint: '右半屏滑动射击 · 滑动 30px 射箭', mDash: '冲刺',
+    tutorialWatched: '📖 已重播科普与教程'
+  },
+  en: {
+    title_main: 'HUNGER SIEGE: ALL ERADICATION', title_sub: 'Asparaginase · Microscopic War · Strategy Survival',
+    tStart: '▶ Start Game', tEndless: '♾️ Endless Mode', tExit: '✕ Exit Game',
+    btnLang: '🌐 语言/Language', btnLeader: '🏆 Leaderboard', btnMobile: '📱 Mobile', btnMobileOff: '📱 Exit Mobile', btnSave: '💾 Saves', teamBtn: 'Team',
+    teamModalTitle: 'Team', teamModalSub: 'Deepseek-v4 flash0731 (AI Programmer / Co-developer)',
+    titleHint: 'WASD Move | Mouse Shoot | Space Dash', lockEndless: '🔒 Requires clearing all 9 Normal levels',
+    exitBlocked: 'Browser blocks auto-close; please close manually',
+    menuTitle: 'HUNGER SIEGE: ALL ERADICATION', menuSub: 'v4.2 · Asparaginase vs ALL · 9-Level Strategy',
+    tabEasy: 'Easy', tabNormal: 'Normal', tabHard: 'Hard', easyTip: 'Relaxed stats · No unlock on clear',
+    endlessBtn: '♾️ Endless Mode', bestiaryBtn: '📖 Bestiary', tutAgain: '📖 Watch Tutorial Again', backSelect: '← Back',
+    hudAsn: 'Serum Asn', hudRisk: 'Risk', hudMiss: 'Missed', hudKill: 'Apoptosis', hudMana: 'Drug Activity', hudExit: '✕ Exit',
+    resAgain: 'Play Again', winBody: 'Cancer cells starved and died.', failBody: 'Cancer cells broke the nutrition blockade. Intercept orbs first, use your ultimate wisely, and use dash/shoot to disrupt special enemies.',
+    keySubMove: 'WASD / Arrows', keySubShoot: 'LMB / J', keySubDash: 'Space / Shift',
+    dashTag: 'Dash', shootTag: 'Shoot', ultTag: 'Burst',
+    hint1: '<b>WASD / Arrows</b> Move · <b class="b">Space / Shift</b> Dash · <b class="g">J</b> or <b class="g">LMB</b> Shoot',
+    hint2: 'Mouse aims independently · <b class="c">Q</b> Ultimate (5s: triple-shot +20% speed) · Green beam = Rescue signal',
+    lvlTagFmt: 'Lv{n} · {stage}', endlessTagFmt: '♾️ Wave {n}', bossTag: ' · BOSS',
+    sci_title: '🔬 How does Asparaginase treat ALL?',
+    sci_normName: 'Normal Cell', sci_normDesc: 'Expresses ASNS and can <b>synthesize asparagine (Asn) endogenously</b> for its own needs.',
+    sci_allName: 'ALL Cancer Cell', sci_allDesc: 'Due to <b>ASNS gene silencing</b>, loses synthesis ability and <b>fully depends on exogenous Asn</b>.',
+    sci_enzName: 'Asparaginase', sci_enzDesc: 'Catalyzes Asn hydrolysis into <b>aspartate and ammonia</b>, rapidly depleting serum free Asn.',
+    sci_flow: 'Asn depleted → ALL cells can\'t synthesize → <b>apoptosis</b>; normal cells unaffected',
+    sci_summary: '🎮 <b>The game simulates this:</b> pilot asparaginase to break down Asn (gold orbs), cutting off ALL cells\' nutrition.',
+    sciOk: 'Got it',
+    tut_title: 'Controls Tutorial', tut_move: 'Move', tut_shoot: 'Shoot', tut_dash: 'Dash',
+    tut_goal: '🎯 <b>Goal:</b> intercept gold orbs to starve cancer cells; grab supplies to avoid misses and control bleeding risk.',
+    tutStart: 'Start Battle',
+    leaderTitle: '🏆 Endless Leaderboard', leaderSub: 'Top 10 · Wave first · Score second',
+    leaderReset: '🗑️ Reset', leaderBack: '← Back', emptyLeader: 'No records yet. Play Endless Mode!',
+    ldMe: ' (me)', ldWaves: 'waves', ldScore: 'score', ldKills: 'kills', ldSaves: 'saves', ldDate: 'date',
+    leaderResetConfirm: 'Reset leaderboard records? This cannot be undone!', saveBlockedGod: ' (GOD MODE: not saved)',
+    saveTitle: '💾 Save Manager', saveSub: 'Manage local progress, language & tutorial flag',
+    saveReset: '🗑️ Reset Saves', saveBack: '← Back', saveResetConfirm: 'Reset ALL save data? Progress, leaderboard, language and tutorial flag will be wiped!',
+    saveInfoFmt: 'Normal cleared: {c}<br>Hard cleared: {h}<br>Endless best: {b}',
+    pauseTitle: 'Game Paused', pResume: 'Resume', pRestart: 'Restart', pQuit: 'Quit', pYes: 'Confirm', pNo: 'Cancel',
+    pConfirmRestart: 'Restart current {m}?', pConfirmQuit: 'Quit to level select?',
+    pauseHint: '↑↓ Navigate · Enter Confirm · ESC Close',
+    winTitle: 'Treatment Success!', failTitle: 'Treatment Failed',
+    resNext: 'Next ▶', resAllClear: '🎉 All Cleared', resRetry: 'Retry', resBack: 'Back',
+    resSubFmt: 'Level {n} ({d}) cleared · {s}',
+    menuHintA: 'Controls: <b>WASD/Arrows</b> move · <b>Space/Shift</b> dash (lvl 2+) · <b>J</b>/<b>LMB</b> shoot (lvl 3+, mouse aims) · <b>Q</b> ultimate',
+    menuHintB: 'Intercept gold orbs (+15 hunger to all enemies) · 3 misses or 100% risk = fail · Green beam = rescue signal (arrive in time: +hunger / late: -hunger)',
+    statKills: 'Cancer cells', statIntercepts: 'Orb intercepts', statMisses: 'Resistance events',
+    endlessEndTitle: 'Endless Mode Over', endlessScore: 'Score', endlessBest: 'Best', endlessWave: 'Waves', endlessKills: 'Kills',
+    cheatUnlock: '✨ Cheat activated: all levels unlocked!', cheatGodOn: '✨ Cheat activated: GOD MODE ON!',
+    cheatGodOff: 'GOD MODE OFF', godBlockSave: ' (GOD MODE: progress not saved)',
+    mShootHint: 'Swipe right half to shoot · 30px swipe', mDash: 'Dash',
+    tutorialWatched: '📖 Tutorial replayed'
+  }
+};
+function t(k) { var d = I18N[LANG]; return (d && d[k] !== undefined) ? d[k] : (I18N.zh[k] !== undefined ? I18N.zh[k] : k); }
+
 /* ================= 关卡表 =================
    n: 关卡号  stage: 阶段  speedMul: 敌军移速倍率  ballT: 补给刷新间隔(s)
    dash/shoot: 技能解锁  specials: 可用特殊敌人  weight: 特殊敌人生成权重
@@ -423,14 +723,23 @@ var LEVELS = [
 function curLevel() { return LEVELS[curLevelN - 1]; }
 var curLevelN = 1;
 
-/* ================= 双难度配置 ================= */
+/* ================= 三难度配置（v4.2 新增简单模式） ================= */
 var DIFFS = {
+  easy:   { init:3, every:10.5, min:3.75, decay:0.25, decayEvery:12,
+    wave1:[1,1], wave2:[1,1], wave3:[1,2], refillMin:3, refillAfter:6, levelMul:[1.0,0.9,0.8] },
   normal: { init:3, every:7, min:2.5, decay:0.25, decayEvery:12,
     wave1:[1,1], wave2:[1,1], wave3:[1,2], refillMin:3, refillAfter:6, levelMul:[1.0,0.9,0.8] },
   hard:   { init:4, every:5, min:1.8, decay:0.35, decayEvery:8,
     wave1:[1,2], wave2:[2,2], wave3:[2,3], refillMin:4, refillAfter:4, levelMul:[1.0,0.85,0.7] }
 };
 function curDiff() { return DIFFS[S.difficulty]; }
+/* 简单模式数值：移速 70%、玩家 +10%、射击 0.25s、大招 20 蓝耗、风险 15% */
+function isEasy() { return S.difficulty === 'easy'; }
+function enemySpeedMul() { return isEasy() ? 0.7 : 1; }
+function playerSpeedMul() { return isEasy() ? 1.1 : 1; }
+function skillCost() { return isEasy() ? 20 : CFG.skill.cost; }
+function riskSideVal() { return isEasy() ? 15 : curLevel().riskSide; }
+function shootCDVal() { return isEasy() ? 0.25 : curLevel().shootCD; }
 /* 关卡修正系数：1~3 / 4~6 / 7~9 关 */
 function levelMul() { return curDiff().levelMul[curLevelN <= 3 ? 0 : (curLevelN <= 6 ? 1 : 2)]; }
 
@@ -441,46 +750,76 @@ var COLLIDE = { normal:20, greedy:24, stalker:16, attacker:20, trapper:22, split
 var SPECIALS = {
   greedy: { rMul:1.5, speed:40, pullR:50, pullV:300,
     name:'贪婪者', emoji:'🍊', color:'#ff9a2e',
+    enName:'Greedy', enDesc:'1.5x size, bright orange. Suction range reduced to 50px (only orbs hugging it); collision radius 24 blocks paths.', enTip:'Watch its suction up close; shooting interrupts it, magnet steals its pull.',
     desc:'体型 1.5 倍、亮橙色，吸取范围削弱至 50px（仅能吸附紧贴自身的补给球），碰撞半径增大至 24 更易阻塞路径。',
     tip:'近身注意其吸取；射击命中可中断，磁铁可夺回吸力。' },
   stalker: { rMul:0.7, speed:150,
     name:'潜行者', emoji:'👻', color:'#9aa4b8',
+    enName:'Stalker', enDesc:'Translucent grey, 30% smaller. Invisible when idle (two red dots). On orb spawn it dashes straight at 150px/s leaving grey afterimages; re-hides if its target is stolen.', enTip:'Any arrow one-shots it (golden shatter); watch edges when orbs spawn.',
     desc:'半透明灰色，体型缩小 30%，静止时完全隐身仅露两个红点；补给球刷新时原地现形，以 150px/s 高速直线扑球（普通敌人 100px/s），移动时留下灰色残影；目标球被抢则重新隐身。',
     tip:'任何箭矢命中潜行者都会将其秒杀（金色碎裂）；球刷新时留意边缘红点现形瞬间。' },
   attacker: { rMul:1.0, speed:30, range:400, fireEvery:2.5,
     name:'攻击者', emoji:'🔵', color:'#2a5fd0',
+    enName:'Attacker', enDesc:'Deep blue, very slow, but fires red slow arrows every 2.5s within 400px; hit halves your speed for 2s.', enTip:'Kill it first; dash through red arrows, blue arrows collide and cancel them.',
     desc:'深蓝色，移动极慢，但在 400px 射程内每隔 2.5s 发射红色减速箭，命中玩家后移速减半 2 秒。',
     tip:'优先击杀；用冲刺躲避红箭，蓝色箭矢可与红箭对撞抵消。' },
   trapper: { rMul:1.05, speed:40, trapEvery:3,
     name:'陷阱师', emoji:'🟢', color:'#2e8a63',
+    enName:'Trapper', enDesc:'Dark green, slow. Drops an invisible trap every 3s (lasts 30s); stepping on it stuns you 1s.', enTip:'Watch subtle ground texture; if stunned and dash is off cooldown, dash to break free early.',
     desc:'墨绿色矮胖体，缓慢蠕动，每 3 秒在原地放置一个隐形陷阱（存在 30s），踩中后眩晕 1 秒。',
     tip:'留意地面细微纹理；眩晕期间若冲刺冷却完毕，可按冲刺提前解除眩晕。' },
   splitter: { rMul:1.23, speed:100, splits:4, splitR:6, splitLife:5,
     name:'分裂者', emoji:'🟣', color:'#7a3fd0',
+    enName:'Splitter', enDesc:'Dark purple with crack texture, slightly smaller (r16). Itself doesn\'t split, but when hunger maxes it splits into 4 micro-splits (90° fan). Appears in levels 4/6/7/8/9.', enTip:'Splits are 35%-size mini remnants that fade after 5s; one arrow kills a split, the triple-shot ultimate clears several.',
     desc:'暗紫色带裂痕纹理，体型略小（半径 16）。本身不分裂，但饥饿值满凋亡时原地分裂为 4 个微型分裂体（90° 扇形散开）。登场于第 4/6/7/8/9 关。',
     tip:'分裂体为缩小的分裂者残影（35% 尺寸），5 秒后自行消散；用箭矢一击秒杀，大招三连发可同时清理多个。' }
 };
 
 /* ================= 道具定义 ================= */
 var ITEMS = {
-  heart:  { name:'爱心', emoji:'❤️', color:'#ff8fc0', unlock:1, iv:[18,25], txt:'❤️ 容错上限 +1' },
-  magnet: { name:'磁铁', emoji:'🧲', color:'#a8c8ff', unlock:4, iv:[10,15], txt:'🧲 磁场激活：吸引补给球 6s' },
-  spread: { name:'连发', emoji:'🏹', color:'#ffb347', unlock:5, iv:[12,18], txt:'🏹 连发子弹 +4 次' },
-  purify: { name:'净化', emoji:'🧪', color:'#6fe08a', unlock:2, iv:[20,30], txt:'🧪 净化药剂：出血风险减半' },
-  shield: { name:'护盾', emoji:'🛡️', color:'#6fb4ff', unlock:7, iv:[18,25], txt:'🛡️ 护盾层数 +2' }
+  heart:  { name:'爱心', enName:'Heart', emoji:'❤️', color:'#ff8fc0', unlock:1, iv:[18,25], txt:'❤️ 容错上限 +1', enTxt:'❤️ +1 miss tolerance' },
+  magnet: { name:'磁铁', enName:'Magnet', emoji:'🧲', color:'#a8c8ff', unlock:4, iv:[10,15], txt:'🧲 磁场激活：吸引补给球 6s', enTxt:'🧲 Magnetic field: pull orbs 6s' },
+  spread: { name:'连发', enName:'Spread Shot', emoji:'🏹', color:'#ffb347', unlock:5, iv:[12,18], txt:'🏹 连发子弹 +4 次', enTxt:'🏹 +4 spread charges' },
+  purify: { name:'净化', enName:'Purifier', emoji:'🧪', color:'#6fe08a', unlock:2, iv:[20,30], txt:'🧪 净化药剂：出血风险减半', enTxt:'🧪 Halve bleeding risk' },
+  shield: { name:'护盾', enName:'Shield', emoji:'🛡️', color:'#6fb4ff', unlock:7, iv:[18,25], txt:'🛡️ 护盾层数 +2', enTxt:'🛡️ +2 shield charges' }
 };
+/* 双语取文本（英文优先 en 字段，回退中文） */
+function spName(def) { return LANG === 'en' ? (def.enName || def.name) : def.name; }
+function spDesc(def) { return LANG === 'en' ? (def.enDesc || def.desc) : def.desc; }
+function spTip(def) { return LANG === 'en' ? (def.enTip || def.tip) : def.tip; }
+function itName(it) { return LANG === 'en' ? (it.enName || it.name) : it.name; }
+function itTxt(it) { return LANG === 'en' ? (it.enTxt || it.txt) : it.txt; }
 
-/* ================= 进度存档 ================= */
+/* ================= 进度存档（v4.2：语言/科普标记/排行榜/作弊码） ================= */
 var SAVE_KEY = 'all-siege-v2';
+var LEADER_KEY = 'all-siege-leader';
 var PROGRESS = { cleared: [], hard: [] };
+var SETTINGS = { lang: 'zh', seenScience: false };
+var LEADER = [];
+var godMode = false;               /* 作弊码 VIVIMYFATHER：无敌模式 */
+var cheatBuffer = '';
+var isMobile = false;              /* 移动端模式 */
 function loadSave() {
   try {
     var d = JSON.parse(localStorage.getItem(SAVE_KEY));
     if (d && d.cleared) PROGRESS.cleared = d.cleared;
     if (d && d.hard) PROGRESS.hard = d.hard;
+    if (d && d.lang) SETTINGS.lang = d.lang;
+    if (d && d.seenScience) SETTINGS.seenScience = true;
+    if (d && d.mobile) SETTINGS.mobile = true;   /* v4.2 fix：移动端配置持久化 */
+  } catch (e) {}
+  if (SETTINGS.lang === 'en' || SETTINGS.lang === 'zh') LANG = SETTINGS.lang;
+  if (SETTINGS.mobile) isMobile = true;          /* 上次处于移动端 → 本次启动沿用 */
+  try { LEADER = JSON.parse(localStorage.getItem(LEADER_KEY)) || []; } catch (e) {}
+  LEADER = LEADER.slice(0, 10);
+}
+function save() {
+  if (godMode) return;              /* 无敌模式：所有进度写入被拦截 */
+  try {
+    localStorage.setItem(SAVE_KEY, JSON.stringify({ cleared: PROGRESS.cleared, hard: PROGRESS.hard, lang: SETTINGS.lang, seenScience: SETTINGS.seenScience, mobile: SETTINGS.mobile }));
   } catch (e) {}
 }
-function save() { try { localStorage.setItem(SAVE_KEY, JSON.stringify({ cleared: PROGRESS.cleared, hard: PROGRESS.hard })); } catch (e) {} }
+function saveLeader() { if (godMode) return; try { localStorage.setItem(LEADER_KEY, JSON.stringify(LEADER)); } catch (e) {} }
 function isUnlocked(n) { return n === 1 || PROGRESS.cleared.indexOf(n - 1) >= 0; }
 function isCleared(n) { return PROGRESS.cleared.indexOf(n) >= 0; }
 function isHardCleared(n) { return PROGRESS.hard.indexOf(n) >= 0; }
@@ -489,6 +828,29 @@ function unlockNext(n) {
 }
 function markHard(n) {
   if (PROGRESS.hard.indexOf(n) < 0) { PROGRESS.hard.push(n); save(); }
+}
+/* 无尽排行榜：波次优先、得分次之，前 10；返回是否进榜 */
+function addLeader(rec) {
+  LEADER.push(rec);
+  LEADER.sort(function (a, b) { return (b.wave - a.wave) || (b.score - a.score); });
+  var inTop = LEADER.indexOf(rec) < 10;
+  LEADER = LEADER.slice(0, 10);
+  saveLeader();
+  return inTop;
+}
+/* 重置全部存档：进度/排行榜/语言/科普标记（恢复初始状态，下次进入重新科普） */
+function resetAllSave() {
+  try { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(LEADER_KEY); localStorage.removeItem(ENDLESS_BEST_KEY); } catch (e) {}
+  PROGRESS = { cleared: [], hard: [] };
+  LEADER = [];
+  SETTINGS = { lang: 'zh', seenScience: false, mobile: false };   /* 重置恢复桌面端配置 */
+  LANG = 'zh';
+  godMode = false;
+  hideCheatHint();
+  if (el.godBadge) el.godBadge.style.display = 'none';
+  if (el.tEndless) el.tEndless.classList.add('locked');
+  if (isMobile) exitMobile();   /* 退出移动端并持久化 mobile:false（含锁屏/触控层/按钮文本） */
+  applyLang();            /* 语言回退后立即刷新界面文本 */
 }
 
 /* ================= 游戏状态 ================= */
@@ -505,6 +867,7 @@ var S = {
   heartBonus: 0,
   spreadCharges: 0,
   shieldCharges: 0,
+  saves: 0,   /* v4.2 排行榜：救援成功数 */
   keyCtrl: false,
   difficulty: 'normal',
   menuDiff: 'normal',
@@ -546,9 +909,13 @@ function loadImages() {
 /* ================= v3 敌人生成规则辅助 ================= */
 function totalCap() {
   if (S.mode === 'endless') return endlessParams().capTotal;
+  if (isEasy()) return 9;                       /* 简单：同屏最多 9 个（普通 60%） */
   return curLevelN <= 5 ? CFG.capLow.total : CFG.capHigh.total;
 }
-function specialCap() { return curLevelN <= 5 ? CFG.capLow.special : CFG.capHigh.special; }
+function specialCap() {
+  if (isEasy()) return curLevelN <= 5 ? 3 : 6;  /* 简单：特殊敌人上限 60% */
+  return curLevelN <= 5 ? CFG.capLow.special : CFG.capHigh.special;
+}
 function specialAlive() {
   var n = 0, i;
   for (i = 0; i < S.enemies.length; i++) if (!S.enemies[i].dying && !S.enemies[i].dead && S.enemies[i].type !== 'normal') n++;
@@ -605,8 +972,12 @@ function grabEls() {
   ['asnFill','asnNum','riskFill','riskNum','timeNum','lvlTag','missText','missDots','killNum',
    'manaFill','manaNum','dashBtn','shootBtn','skillBtn','riskOverlay','overlay','menuPanel','bestiaryPanel',
    'resultPanel','grid','bestiary','resTitle','resSub','resBody','resStat','resBtns','toasts','errLine',
-   'tabNormal','tabHard','endlessBtn','rewardPanel','rewardSub','rewardCards','exitBtn',
-   'titlePanel','pauseMenu','pauseConfirm','pauseConfirmText','pauseYes','pauseNo','countdown','tStart','tEndless','tExit','teamBtn','teamModal'
+   'tabEasy','tabNormal','tabHard','endlessBtn','rewardPanel','rewardSub','rewardCards','exitBtn',
+   'titlePanel','pauseMenu','pauseConfirm','pauseConfirmText','pauseYes','pauseNo','countdown','tStart','tEndless','tExit','teamBtn','teamModal',
+   'titleMain','titleSub','cheatHint','godBadge','sciencePanel','sciOk','tutorialPanel','tutStart',
+   'leaderPanel','leaderList','leaderReset','leaderBack','savePanel','saveInfo','saveReset','saveBack','saveErrLine',
+   'btnLang','btnLeader','btnMobile','btnSave','tutAgainBtn','menuHint',
+   'touchUI','joystickZone','joyBase','joyKnob','ultZone','ultBtn','shootZone','shootHint','dashBtnT','pauseBtnT','hint'
   ].forEach(function (id) { el[id] = document.getElementById(id); });
 }
 
@@ -746,6 +1117,12 @@ function spawnRedArrow(x, y, ang) {
 }
 
 function startLevel(n, difficulty) {
+  /* v4.2 fix：首次点击第 1 关且本地无任何通关记录 → 先弹科普页 + 教程（不再启动时弹出） */
+  if (n === 1 && !SETTINGS.seenScience && PROGRESS.cleared.length === 0) {
+    pendingStartDiff = difficulty || S.menuDiff || 'normal';
+    showScience();
+    return;
+  }
   curLevelN = n;
   S.mode = 'level';
   S.difficulty = difficulty || 'normal';
@@ -778,6 +1155,7 @@ function startLevel(n, difficulty) {
   spawnBall();
   el.overlay.style.display = 'none';
   el.exitBtn.style.display = 'none';
+  updateTouchUI();   /* 局内显示触控层（移动端） */
 }
 
 /* ================= 特效工具 ================= */
@@ -849,8 +1227,8 @@ function tryDash() {
   if (S.player.stun > 0) {            /* 眩晕期间：若冲刺冷却完毕，消耗冲刺提前解除眩晕 */
     if (S.dash.cd <= 0) {
       S.player.stun = 0;
-      S.dash.cd = (S.mode === 'endless' && S.endless.single.speedBurst) ? L.dashCD / 2 : L.dashCD;
-      addToast('⚡ 冲刺解除眩晕！');
+      S.dash.cd = godMode ? 0 : ((S.mode === 'endless' && S.endless.single.speedBurst) ? L.dashCD / 2 : L.dashCD);
+      addToast(LANG === 'en' ? '⚡ Dash breaks the stun!' : '⚡ 冲刺解除眩晕！');
       ring(S.player.x, S.player.y, '#9fd8ff', 30);
     }
     return;
@@ -860,7 +1238,7 @@ function tryDash() {
   if (S.mode === 'endless' && S.endless.single.speedBurst) dc = dc / 2;   /* 疾风：冲刺冷却减半 */
   S.dash.active = true; S.dash.t = CFG.dash.dur;
   S.dash.dirX = S.player.dirX; S.dash.dirY = S.player.dirY;
-  S.dash.cd = dc;
+  S.dash.cd = godMode ? 0 : dc;      /* 无敌模式：冲刺无冷却 */
   ring(S.player.x, S.player.y, '#9fd8ff', 26);
   burst(S.player.x, S.player.y, '#9fd8ff', 10, 160);
 }
@@ -868,14 +1246,14 @@ function tryDash() {
 /* 射击：方向由调用方传入（J 键朝面朝方向 / 鼠标左键朝光标方向），互不影响移动 */
 function fireArrow(dirX, dirY) {
   var L = curLevel();
-  if (S.status !== 'playing' || !L.shoot || S.player.stun > 0) return;
+  if (S.status !== 'playing' || !L.shoot || (S.player.stun > 0 && !godMode)) return;
   if (S.shoot.cd > 0) return;
-  var cd = S.mode === 'endless' ? endlessShootCD(L.shootCD) : L.shootCD;
+  var cd = godMode ? 0 : (S.mode === 'endless' ? endlessShootCD(L.shootCD) : shootCDVal());   /* 简单 0.25s / 无敌无冷却 */
   var base = angleOf(dirX, dirY);
   var extra = (S.mode === 'endless' && S.endless.single.extraArrows) ? 1 : 0;   /* 额外 2 支（±0.15rad） */
   if (S.spreadCharges > 0) {
     /* 连发子弹（充能制）：每次消耗 1 次，发射 5 支（25° 扇形），单支击退 40 / 硬直 0.3 / 饥饿 5 */
-    S.spreadCharges--;
+    if (!godMode) S.spreadCharges--;   /* 无敌模式：道具无限 */
     S.shoot.cd = cd;
     var st = 0.436 / 4;   /* 25° = 0.436rad，5 支等距 */
     for (var a = -2; a <= 2; a++) spawnArrow(base + a * st, 5, 40, 0.3, true);
@@ -900,23 +1278,23 @@ function fireArrowAt(mx, my) {
 
 function castSkill() {
   if (S.status !== 'playing') return;
-  if (S.mana < CFG.skill.cost) { addFloat(S.player.x, S.player.y - 34, '蓝量不足', '#9fc3ff'); return; }
-  S.mana -= CFG.skill.cost;
+  if (S.mana < skillCost()) { addFloat(S.player.x, S.player.y - 34, '蓝量不足', '#9fc3ff'); return; }   /* 简单：20 蓝耗 */
+  if (!godMode) S.mana -= skillCost();      /* 无敌模式：蓝量不消耗 */
   S.asn = 0;
-  var rs = S.mode === 'endless' ? endlessRiskSide(curLevel().riskSide) : curLevel().riskSide;
+  var rs = S.mode === 'endless' ? endlessRiskSide(riskSideVal()) : riskSideVal();   /* 简单：风险 +15% */
   for (var i = 0; i < S.enemies.length; i++) {
     var e = S.enemies[i];
     if (e.dying || e.dead) continue;
     if (e.isBoss) { bossHungerDelta(CFG.skill.hungerDmg); }
     else e.hunger = Math.min(CFG.enemy.hungerMax, e.hunger + CFG.skill.hungerDmg);
   }
-  if (!(S.mode === 'endless' && S.endless.single.riskImmune > 0)) S.risk = Math.min(100, S.risk + rs);   /* 风险免疫时大招不涨风险 */
+  if (!godMode && !(S.mode === 'endless' && S.endless.single.riskImmune > 0)) S.risk = Math.min(100, S.risk + rs);   /* 风险免疫/无敌时大招不涨风险 */
   S.buffs.ult = 5;                 /* 大招强化状态 5s：三连射 + 移速 +20% */
   S.flash = 1;
   ring(S.player.x, S.player.y, '#b8e0ff', 40);
   burst(S.player.x, S.player.y, '#ffffff', 24, 230);
-  addFloat(S.player.x, S.player.y - 40, '爆发技能！敌军饥饿 +20', '#ffffff');
-  addToast('🔥 大招强化：5 秒内三连射、基础移速 +20%');
+  addFloat(S.player.x, S.player.y - 40, LANG === 'en' ? 'Burst! Enemies +20 hunger' : '爆发技能！敌军饥饿 +20', '#ffffff');
+  addToast(LANG === 'en' ? '🔥 Ultimate: 5s triple-shot, +20% speed' : '🔥 大招强化：5 秒内三连射、基础移速 +20%');
 }
 
 /* ================= 更新 ================= */
@@ -942,8 +1320,8 @@ function update(dt) {
     S.time -= dt;
     if (S.time <= 0) { S.time = 0; win(); return; }
   }
-  if (S.misses >= curMaxMiss()) { fail('耐药事件累计 ' + S.misses + ' 次：癌细胞反复抢占补给、分裂增殖，治疗失效。'); return; }
-  if (S.risk >= CFG.risk.max) { fail('出血风险达到 100%：模拟严重凝血障碍（脑出血），治疗被迫中止。'); return; }
+  if (!godMode && S.misses >= curMaxMiss()) { fail('耐药事件累计 ' + S.misses + ' 次：癌细胞反复抢占补给、分裂增殖，治疗失效。'); return; }
+  if (!godMode && S.risk >= CFG.risk.max) { fail('出血风险达到 100%：模拟严重凝血障碍（脑出血），治疗被迫中止。'); return; }
 
   /* 衰减与恢复（无尽按波次动态 + 永久成长加成） */
   var asnD = CFG.asnDecay, riskD = CFG.risk.decay, manaR = CFG.mana.regen;
@@ -984,8 +1362,8 @@ function update(dt) {
     p.y += S.dash.dirY * CFG.dash.speed * dt;
     S.trail.push({ x: p.x, y: p.y, life: 0.25 });
     if (S.dash.t <= 0) S.dash.active = false;
-  } else if (p.stun <= 0) {
-    var spd = CFG.player.speed * (p.slow > 0 ? 0.5 : 1) * (S.buffs.ult > 0 ? 1.2 : 1) * (S.mode === 'endless' ? endlessMoveMul() : 1);
+  } else if (p.stun <= 0 || godMode) {   /* 无敌模式：眩晕/减速免疫 */
+    var spd = CFG.player.speed * playerSpeedMul() * (godMode ? 1 : (p.slow > 0 ? 0.5 : 1)) * (S.buffs.ult > 0 ? 1.2 : 1) * (S.mode === 'endless' ? endlessMoveMul() : 1);
     var dx = p.tx - p.x, dy = p.ty - p.y, d = Math.sqrt(dx * dx + dy * dy);
     if (d > 4) {
       var step = Math.min(spd * dt, d);
@@ -1118,7 +1496,7 @@ function updateSplits(dt) {
     if (b) {
       var dx = b.x - sp.x, dy = b.y - sp.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
       if (d > 0.001) sp.facingX = dx / d;
-      var step = Math.min(sp.speed * (S.mode === 'endless' ? endlessParams().speedMul : curLevel().speedMul) * dt, d);
+      var step = Math.min(sp.speed * (S.mode === 'endless' ? endlessParams().speedMul : curLevel().speedMul) * enemySpeedMul() * dt, d);   /* 简单 70% */
       sp.x += dx / d * step; sp.y += dy / d * step;
     }
     /* 5 秒消散 / 饿死消失（不再分裂） */
@@ -1164,7 +1542,8 @@ function updateSignals(dt) {
           }
         }
         S.risk = Math.max(0, S.risk - CFG.signal.riskDrop);
-        addToast('🚨 造血爆发！全场敌军饥饿 +' + CFG.signal.gain + '，出血风险 -' + CFG.signal.riskDrop + '%');
+        S.saves++;                       /* v4.2 排行榜：救援成功数 */
+        addToast(LANG === 'en' ? ('🚨 Hematopoiesis! All enemies +' + CFG.signal.gain + ' hunger, risk -' + CFG.signal.riskDrop + '%') : ('🚨 造血爆发！全场敌军饥饿 +' + CFG.signal.gain + '，出血风险 -' + CFG.signal.riskDrop + '%'));
         addFloat(c.x, c.y - 40, '造血爆发！', '#7fe08a');
         ring(c.x, c.y, '#7fe08a', 44);
       } else if (c.sigT <= 0) {
@@ -1177,7 +1556,7 @@ function updateSignals(dt) {
             else S.enemies[k].hunger = Math.max(0, S.enemies[k].hunger - CFG.signal.penalty);
           }
         }
-        addToast('⚠️ 信号弹被劫持：敌军饥饿 -' + CFG.signal.penalty);
+        addToast(LANG === 'en' ? ('⚠️ Signal hijacked: enemies -' + CFG.signal.penalty + ' hunger') : ('⚠️ 信号弹被劫持：敌军饥饿 -' + CFG.signal.penalty));
         addFloat(c.x, c.y - 40, '信号被劫持…', '#ff6b6b');
       }
     } else {
@@ -1219,7 +1598,7 @@ function updateEnemies(dt) {
 
     var L = curLevel(), slow = e.hunger > CFG.enemy.slowAt ? CFG.enemy.slowMul : 1;
     var spdMul = S.mode === 'endless' ? endlessParams().speedMul : L.speedMul;
-    var baseSpeed = (e.type === 'normal' ? CFG.enemy.speed : SPECIALS[e.type].speed) * spdMul;
+    var baseSpeed = (e.type === 'normal' ? CFG.enemy.speed : SPECIALS[e.type].speed) * spdMul * enemySpeedMul();   /* 简单：移速 70% */
     e.wob += dt * 3;
 
     if (e.type === 'splitter') {
@@ -1462,7 +1841,7 @@ function updateArrows(dt) {
           addToast('🛡️ 护盾抵消减速箭！');
           burst(ar.x, ar.y, '#6fb4ff', 12, 150);
           ring(ar.x, ar.y, '#6fb4ff', 24);
-        } else {
+        } else if (!godMode) {            /* 无敌模式：免疫减速箭 */
           S.player.slow = 2;                    /* 移速减半 2s */
           addToast('🔻 被减速箭命中！移速减半 2s');
           burst(ar.x, ar.y, '#ff6b6b', 10, 130);
@@ -1503,7 +1882,7 @@ function collisions() {
           addToast('🛡️ 护盾抵消陷阱眩晕！');
           ring(S.player.x, S.player.y, '#6fb4ff', 30);
           burst(S.player.x, S.player.y, '#6fb4ff', 12, 140);
-        } else {
+        } else if (!godMode) {            /* 无敌模式：免疫陷阱眩晕 */
           S.player.stun = 1;
           addToast('💫 踩中隐形陷阱，眩晕 1 秒！（冲刺可解除）');
           ring(S.player.x, S.player.y, '#7fe08a', 30);
@@ -1574,26 +1953,26 @@ function pickItem(type) {
   if (type === 'heart') {
     if (S.mode === 'endless' || S.heartBonus < 2) {   /* 无尽：爱心无上限叠加漏球容错 */
       S.heartBonus++;
-      addToast('❤️ 容错上限 +1（当前 ' + curMaxMiss() + ' 次）');
+      addToast(LANG === 'en' ? ('❤️ +1 miss tolerance (now ' + curMaxMiss() + ')') : ('❤️ 容错上限 +1（当前 ' + curMaxMiss() + ' 次）'));
       if (S.itemTimers.heart) S.itemTimers.heart += 5;   /* 下一次爱心刷新等待 +5s */
       el.missText.classList.remove('flash');
       void el.missText.offsetWidth;
       el.missText.classList.add('flash');          /* 漏球分母闪烁提示 */
     } else {
-      addToast('❤️ 容错已达上限，拾取无效');
+      addToast(LANG === 'en' ? '❤️ Already at max tolerance' : '❤️ 容错已达上限，拾取无效');
     }
   } else if (type === 'magnet') {
     S.buffs.magnet = 6;
-    addToast(it.txt);
+    addToast(itTxt(it));
   } else if (type === 'spread') {
     S.spreadCharges = Math.min(S.mode === 'endless' ? endlessSpreadCap() : 6, S.spreadCharges + 4);   /* 拾取 +4 次，上限 6（无尽可成长） */
-    addToast('🏹 连发子弹 +4 次（当前 ' + S.spreadCharges + ' 次）');
+    addToast(LANG === 'en' ? ('🏹 +4 spread charges (now ' + S.spreadCharges + ')') : ('🏹 连发子弹 +4 次（当前 ' + S.spreadCharges + ' 次）'));
   } else if (type === 'purify') {
     S.risk = S.risk < 10 ? 0 : Math.floor(S.risk * 0.5);
-    addToast('🧪 净化药剂：出血风险降至 ' + S.risk + '%');
+    addToast(LANG === 'en' ? ('🧪 Risk halved to ' + S.risk + '%') : ('🧪 净化药剂：出血风险降至 ' + S.risk + '%'));
   } else if (type === 'shield') {
     S.shieldCharges += 2;                 /* 永久 +2 层护盾（可叠加） */
-    addToast('🛡️ 护盾层数 +2（当前 ' + S.shieldCharges + ' 层）');
+    addToast(LANG === 'en' ? ('🛡️ +2 shield charges (now ' + S.shieldCharges + ')') : ('🛡️ 护盾层数 +2（当前 ' + S.shieldCharges + ' 层）'));
     ring(S.player.x, S.player.y, '#6fb4ff', 44);
   }
 }
@@ -1602,7 +1981,7 @@ function pickItem(type) {
 function win() {
   S.status = 'win';
   if (S.difficulty === 'hard') markHard(curLevelN);   /* 困难通关记双星 */
-  else unlockNext(curLevelN);                          /* 普通通关解锁下一关 */
+  else if (S.difficulty === 'normal') unlockNext(curLevelN);   /* 普通通关解锁下一关；简单模式通关不解锁 */
   showResult();
 }
 function fail(reason) {
@@ -2086,10 +2465,11 @@ function updateHUD() {
   }
   el.timeNum.style.color = (S.mode === 'endless' ? S.endless.waveT > (S.endless.bossWave ? 50 : 20) : S.time <= 10) ? '#ff7a7a' : '#eaf6ff';
   if (S.mode === 'endless') {
-    el.lvlTag.textContent = '♾️ 第' + S.endless.wave + '波' + (S.endless.bossWave ? ' · BOSS' : '');
+    el.lvlTag.textContent = t('endlessTagFmt').replace('{n}', S.endless.wave) + (S.endless.bossWave ? t('bossTag') : '');
   } else {
-    el.lvlTag.textContent = '第' + curLevelN + '关 · ' + curLevel().stage;
+    el.lvlTag.textContent = t('lvlTagFmt').replace('{n}', curLevelN).replace('{stage}', curLevel().stage);
   }
+  el.godBadge.style.display = godMode ? 'flex' : 'none';   /* v4.2 无敌模式标识 */
   var cap = curMaxMiss();
   el.missText.textContent = S.misses + ' / ' + cap;
   el.missDots.innerHTML = '';
@@ -2118,11 +2498,11 @@ function updateHUD() {
   /* 左侧提示 */
   el.toasts.innerHTML = '';
   for (i = 0; i < S.toasts.length; i++) {
-    var t = document.createElement('div');
-    t.className = 'toast';
-    t.style.opacity = Math.min(1, S.toasts[i].life);
-    t.textContent = S.toasts[i].text;
-    el.toasts.appendChild(t);
+    var tv = document.createElement('div');   /* 不能用 var t：遮蔽全局 t() 导致 't is not a function' */
+    tv.className = 'toast';
+    tv.style.opacity = Math.min(1, S.toasts[i].life);
+    tv.textContent = S.toasts[i].text;
+    el.toasts.appendChild(tv);
   }
 }
 
@@ -2134,6 +2514,7 @@ function showMenu() {
   el.resultPanel.style.display = 'none';
   el.overlay.style.display = 'flex';
   el.endlessBtn.classList.toggle('locked', !isCleared(9));   /* 无尽模式：通关全部 9 关普通解锁 */
+  updateTouchUI();   /* 选关界面不显示触控层 */
   buildGrid();
 }
 function buildGrid() {
@@ -2142,15 +2523,17 @@ function buildGrid() {
   for (var i = 0; i < LEVELS.length; i++) {
     var L = LEVELS[i], cell = document.createElement('div');
     cell.className = 'lvlCell';
-    if (diff === 'hard') { unlocked = isCleared(L.n); cleared = isHardCleared(L.n); }   /* 困难：通关普通解锁 */
+    if (diff === 'easy') { unlocked = true; cleared = false; }        /* v4.2 简单：九关全部初始解锁 */
+    else if (diff === 'hard') { unlocked = isCleared(L.n); cleared = isHardCleared(L.n); }   /* 困难：通关普通解锁 */
     else { unlocked = isUnlocked(L.n); cleared = isCleared(L.n); }
     if (cleared) cell.classList.add('cleared');
     if (!unlocked) cell.classList.add('locked');
     var icons = L.specials.map(function (s) { return SPECIALS[s].emoji; }).join('');
+    var diffTag = diff === 'hard' ? ' · ' + t('tabHard') : (diff === 'easy' ? ' · ' + t('tabEasy') : '');
     cell.innerHTML =
       '<span class="st">' + (cleared ? (diff === 'hard' ? '⭐⭐' : '⭐') : (unlocked ? '🔓' : '🔒')) + '</span>' +
       '<div class="n">' + L.n + '</div>' +
-      '<div class="stage">' + L.stage + (diff === 'hard' ? ' · 困难' : '') + '</div>' +
+      '<div class="stage">' + L.stage + diffTag + '</div>' +
       '<div class="icon">' + (icons || '💜') + '</div>' +
       '<div class="stage">' + (L.shoot ? (L.dash ? '冲刺·射击' : '冲刺') : '基础') + '</div>';
     if (unlocked) {
@@ -2158,6 +2541,7 @@ function buildGrid() {
     }
     el.grid.appendChild(cell);
   }
+  el.tabEasy.classList.toggle('active', diff === 'easy');
   el.tabNormal.classList.toggle('active', diff === 'normal');
   el.tabHard.classList.toggle('active', diff === 'hard');
 }
@@ -2171,11 +2555,11 @@ function showBestiary() {
     var unlockN = -1;
     for (i = 0; i < LEVELS.length; i++) if (LEVELS[i].specials.indexOf(k) >= 0) { unlockN = LEVELS[i].n; break; }
     if (unlockN > 0 && unlockN <= maxN) {
-      html += '<div class="beItem"><div class="em">' + def.emoji + '</div><div><div class="nm">' + def.name + '（第' + unlockN + '关登场）</div>' +
-        '<div class="ds">' + def.desc + '</div><div class="tp">💡 ' + def.tip + '</div></div></div>';
+      html += '<div class="beItem"><div class="em">' + def.emoji + '</div><div><div class="nm">' + spName(def) + (LANG === 'en' ? ' (lvl ' + unlockN + ')' : '（第' + unlockN + '关登场）') + '</div>' +
+        '<div class="ds">' + spDesc(def) + '</div><div class="tp">💡 ' + spTip(def) + '</div></div></div>';
     }
   }
-  el.bestiary.innerHTML = html || '<p>尚未解锁任何特殊敌人，通关更多关卡解锁图鉴。</p>';
+  el.bestiary.innerHTML = html || '<p>' + (LANG === 'en' ? 'No special enemies unlocked yet. Clear more levels to reveal the bestiary.' : '尚未解锁任何特殊敌人，通关更多关卡解锁图鉴。') + '</p>';
 }
 function showResult() {
   el.menuPanel.style.display = 'none';
@@ -2183,27 +2567,28 @@ function showResult() {
   el.resultPanel.style.display = '';
   el.overlay.style.display = 'flex';
   var stat =
-    '<div class="it"><div class="v">' + S.kills + '</div><div class="k">凋亡癌细胞</div></div>' +
-    '<div class="it"><div class="v">' + S.intercepts + '</div><div class="k">补给拦截</div></div>' +
-    '<div class="it"><div class="v">' + S.misses + '</div><div class="k">耐药事件</div></div>';
+    '<div class="it"><div class="v">' + S.kills + '</div><div class="k">' + t('statKills') + '</div></div>' +
+    '<div class="it"><div class="v">' + S.intercepts + '</div><div class="k">' + t('statIntercepts') + '</div></div>' +
+    '<div class="it"><div class="v">' + S.misses + '</div><div class="k">' + t('statMisses') + '</div></div>';
   el.resStat.innerHTML = stat;
   var btns = '';
+  var diffName = S.difficulty === 'hard' ? t('tabHard') : (S.difficulty === 'easy' ? t('tabEasy') : t('tabNormal'));
   if (S.status === 'win') {
-    el.resTitle.textContent = '治疗成功！';
-    el.resSub.textContent = '第' + curLevelN + '关（' + (S.difficulty === 'hard' ? '困难' : '普通') + '）已通关 · ' + curLevel().stage + (S.difficulty === 'hard' ? ' ⭐⭐' : ' ⭐');
+    el.resTitle.textContent = t('winTitle');
+    el.resSub.textContent = t('resSubFmt').replace('{n}', curLevelN).replace('{d}', diffName).replace('{s}', curLevel().stage) + (S.difficulty === 'hard' ? ' ⭐⭐' : (S.difficulty === 'normal' ? ' ⭐' : ''));
     el.resultPanel.className = 'panel win';
-    el.resBody.innerHTML = '敌军因缺乏营养而饥饿凋亡。' +
-      (curLevelN < 9 ? (isUnlocked(curLevelN + 1) ? ' <b class="g">第' + (curLevelN + 1) + '关已解锁！</b>' : '') : ' <b class="g">全部 9 关通关，恭喜！</b>') +
-      (S.difficulty === 'hard' ? ' <b class="c">困难模式双星达成！</b>' : '');
-    btns += '<button class="pbtn main" id="resNext">' + (curLevelN < 9 ? '下一关 ▶' : '🎉 全部通关') + '</button>';
+    el.resBody.innerHTML = t('winBody') +
+      (S.difficulty === 'normal' ? (curLevelN < 9 ? (isUnlocked(curLevelN + 1) ? ' <b class="g">第' + (curLevelN + 1) + '关已解锁！</b>' : '') : ' <b class="g">全部 9 关通关，恭喜！</b>') : '') +
+      (S.difficulty === 'hard' ? ' <b class="c">困难模式双星达成！</b>' : (S.difficulty === 'easy' ? ' <b class="c">简单模式通关（不解锁进度）</b>' : ''));
+    btns += '<button class="pbtn main" id="resNext">' + (curLevelN < 9 && S.difficulty !== 'easy' ? t('resNext') : t('resAllClear')) + '</button>';
   } else {
-    el.resTitle.textContent = '治疗失败';
+    el.resTitle.textContent = t('failTitle');
     el.resSub.textContent = S.failReason || '';
     el.resultPanel.className = 'panel fail';
-    el.resBody.innerHTML = '癌细胞突破了营养封锁。重新制定策略：优先拦截补给球、谨慎释放大招、利用冲刺与射击干扰特殊敌人。';
-    btns += '<button class="pbtn main" id="resRetry">重试本关</button>';
+    el.resBody.innerHTML = t('failBody');
+    btns += '<button class="pbtn main" id="resRetry">' + t('resRetry') + '</button>';
   }
-  btns += '<button class="pbtn ghost" id="resBack">返回选关</button>';
+  btns += '<button class="pbtn ghost" id="resBack">' + t('resBack') + '</button>';
   el.resBtns.innerHTML = btns;
   var nb = document.getElementById('resNext'), rb = document.getElementById('resRetry'), bk = document.getElementById('resBack');
   if (nb) nb.addEventListener('click', function () { startLevel(Math.min(9, curLevelN + 1)); });
@@ -2215,9 +2600,12 @@ function showResult() {
 var keys = {};
 document.addEventListener('keydown', function (e) {
   keys[e.code] = true;
-  /* ESC：关闭团队弹窗 / 暂停切换 */
+  /* ESC：关闭团队弹窗 / 排行榜 / 存档管理 / 选关返回标题 / 暂停切换 */
   if (e.code === 'Escape') {
     if (el.teamModal.style.display !== 'none') { el.teamModal.style.display = 'none'; return; }
+    if (el.leaderPanel.style.display === 'flex') { el.leaderPanel.style.display = 'none'; return; }
+    if (el.savePanel.style.display === 'flex') { el.savePanel.style.display = 'none'; return; }
+    if (S.status === 'menu') { showTitle(); return; }   /* v4.2 选关界面 ESC 返回标题 */
     if (S.status === 'playing') {
       if (S.paused) {
         if (pauseConfirmMode) {                       /* 确认框打开时：ESC 先关闭确认框 */
@@ -2231,11 +2619,12 @@ document.addEventListener('keydown', function (e) {
     }
     return;
   }
-  /* 标题页键盘导航：↑↓ 切换高亮，Enter/空格 触发 */
-  if (S.status === 'title') {
+  /* 标题页键盘导航：↑↓ 切换高亮，Enter/空格 触发；作弊码输入优先（S 键与导航共用不冲突） */
+  if (S.status === 'title' || S.status === 'science' || S.status === 'tutorial') {
+    handleCheatInput(e.key);   /* 先累积作弊码：任何按键（含 S/W）都进 buffer */
     if (e.code === 'ArrowUp' || e.code === 'KeyW') { titleFocus = (titleFocus + 2) % 3; updateTitleFocus(); e.preventDefault(); }
     else if (e.code === 'ArrowDown' || e.code === 'KeyS') { titleFocus = (titleFocus + 1) % 3; updateTitleFocus(); e.preventDefault(); }
-    else if (e.code === 'Enter' || e.code === 'Space') { titleActivate(); e.preventDefault(); }
+    else if (e.code === 'Enter' || e.code === 'Space') { if (S.status === 'title') titleActivate(); e.preventDefault(); }
     return;
   }
   /* 暂停菜单键盘导航 */
@@ -2287,7 +2676,7 @@ window.addEventListener('resize', fit);
 /* ================= 无尽模式（Endless Mode） ================= */
 var ENDLESS_BEST_KEY = 'all-siege-endless-best';
 function loadEndlessBest() { try { return parseInt(localStorage.getItem(ENDLESS_BEST_KEY), 10) || 0; } catch (e) { return 0; } }
-function saveEndlessBest(v) { try { localStorage.setItem(ENDLESS_BEST_KEY, String(v)); } catch (e) {} }
+function saveEndlessBest(v) { if (godMode) return; try { localStorage.setItem(ENDLESS_BEST_KEY, String(v)); } catch (e) {} }
 
 /* 波次难度参数（随波次递增） */
 function endlessParams() {
@@ -2319,6 +2708,7 @@ function endlessRiskSide(base) { return Math.max(10, base - S.endless.perm.ultRi
 function startEndless() {
   if (!isCleared(9)) { addToast('🔒 需通关全部 9 关普通难度解锁'); return; }
   S.mode = 'endless';
+  S.saves = 0;   /* v4.2 排行榜：救援成功统计 */
   S.paused = false; S.countdownT = 0;
   el.pauseMenu.style.display = 'none';
   el.countdown.style.display = 'none';
@@ -2358,6 +2748,7 @@ function startEndless() {
   el.overlay.style.display = 'none';
   el.exitBtn.style.display = '';
   el.rewardPanel.style.display = 'none';
+  updateTouchUI();   /* 局内显示触控层（移动端） */
 }
 function startNextWave() {
   var E = S.endless;
@@ -2385,12 +2776,23 @@ function waveComplete() {
   addToast('第' + (E.wave - 1) + '波完成！');
   E.single.weaken = false; E.single.speedBurst = false; E.single.extraArrows = false;   /* 单波型效果结束 */
 }
+/* v4.2 无尽得分公式：波次分(100×波次) + 击杀分(普通/特殊 5 分/个，Boss 额外 50) + 救援分(10/次) - 漏球惩罚(50/次)，最低 0 */
+function endlessScore() {
+  var E = S.endless;
+  var s = E.wave * 100 + S.kills * 5 + (E.bossKills || 0) * 50 + (S.saves || 0) * 10 - S.misses * 50;
+  return Math.max(0, s);
+}
 function endlessEnd(reason) {
   var E = S.endless;
-  E.score = S.kills * 10 + (E.wave - 1) * 100;
+  E.score = endlessScore();
   if (E.score > E.best) { E.best = E.score; saveEndlessBest(E.best); }
+  var inTop = false;
+  if (!E.recorded) {
+    E.recorded = true;
+    if (!godMode) inTop = addLeader({ wave: E.wave, score: E.score, kills: S.kills, saves: S.saves || 0, date: new Date().toLocaleDateString() });   /* 无敌模式不入榜 */
+  }
   S.status = 'fail';
-  S.failReason = reason + '（最终波次 ' + E.wave + '，得分 ' + E.score + '，最高分 ' + E.best + '）';
+  S.failReason = reason + (inTop ? '（🏆 新纪录：进入排行榜前十！）' : '（最终波次 ' + E.wave + '，得分 ' + E.score + '，最高分 ' + E.best + '）');
   showResultEndless();
 }
 
@@ -2424,7 +2826,7 @@ function bossHungerDelta(delta) {
   b.hunger = clamp(b.hunger - delta, 0, b.hungerMax);
   if (b.hunger <= 0) {
     b.vulnerable = true; b.vulT = 10;
-    addToast('⚠️ Boss 饥饿归零！10 秒虚弱，集火击杀！');
+    addToast(LANG === 'en' ? '⚠️ Boss hunger zero! 10s vulnerable, focus fire!' : '⚠️ Boss 饥饿归零！10 秒虚弱，集火击杀！');
     ring(b.x, b.y, '#ffd76a', 70);
   }
 }
@@ -2493,9 +2895,10 @@ function killBoss() {
   if (!b) return;
   b.dead = true;
   E.boss = null;
+  E.bossKills = (E.bossKills || 0) + 1;   /* v4.2 排行榜：Boss 额外 +50 分 */
   burst(b.x, b.y, '#ffd76a', 44, 320);
   ring(b.x, b.y, '#ffd76a', 90);
-  addToast('👑 Boss 击败！');
+  addToast(LANG === 'en' ? '👑 Boss defeated!' : '👑 Boss 击败！');
   for (var i = S.enemies.length - 1; i >= 0; i--) if (!S.enemies[i].isBoss) S.enemies.splice(i, 1);   /* 清场 */
   S.risk = Math.max(0, S.risk - 10);
   S.mana = Math.min(100, S.mana + 30);
@@ -2509,17 +2912,25 @@ function killBoss() {
   E.phase = 'reward';
   prepareReward();
 }
-function bossName(t) { return t === 'normal' ? '巨型癌细胞' : SPECIALS[t].name + '·Boss'; }
+function bossName(t) { return t === 'normal' ? (LANG === 'en' ? 'Giant Cancer Cell' : '巨型癌细胞') : spName(SPECIALS[t]) + (LANG === 'en' ? ' Boss' : '·Boss'); }
 function bossPreviewTip(t) {
-  switch (t) {
-    case 'normal': return '巨型癌细胞：每 5 秒召唤 2 个普通敌人'; break;
-    case 'greedy': return '吸取范围 200px，可同时吸 2 个补给球'; break;
-    case 'stalker': return '每 3 秒瞬移至补给球旁；箭矢仅能强制现形 2 秒'; break;
-    case 'attacker': return '同时发射 3 发减速箭，冷却 1.5 秒'; break;
-    case 'trapper': return '每 2 秒布陷阱，触发范围与眩晕时间延长'; break;
-    case 'splitter': return '每 4 秒释放 4 个微型分裂体'; break;
-    default: return '';
-  }
+  var en = {
+    normal: 'Summons 2 normal enemies every 5s',
+    greedy: 'Sucks orbs within 200px, up to 2 at once',
+    stalker: 'Teleports to orbs every 3s; arrows only reveal it for 2s',
+    attacker: 'Fires 3 slow arrows at once, 1.5s cooldown',
+    trapper: 'Drops a trap every 2s; larger trigger and longer stun',
+    splitter: 'Releases 4 micro-splits every 4s'
+  };
+  var zh = {
+    normal: '巨型癌细胞：每 5 秒召唤 2 个普通敌人',
+    greedy: '吸取范围 200px，可同时吸 2 个补给球',
+    stalker: '每 3 秒瞬移至补给球旁；箭矢仅能强制现形 2 秒',
+    attacker: '同时发射 3 发减速箭，冷却 1.5 秒',
+    trapper: '每 2 秒布陷阱，触发范围与眩晕时间延长',
+    splitter: '每 4 秒释放 4 个微型分裂体'
+  };
+  return LANG === 'en' ? (en[t] || '') : (zh[t] || '');
 }
 
 /* 无尽每帧：波次 / Boss / 休整 / 奖励 */
@@ -2550,10 +2961,11 @@ function updateEndless(dt) {
   }
 }
 
-/* 漏球登记（无尽单次奖励可豁免） */
+/* 漏球登记（无尽单次奖励可豁免；无敌模式完全免疫） */
 function registerMiss() {
+  if (godMode) return;                     /* 无敌模式：漏球不计 */
   var E = S.endless;
-  if (E && E.single.missImmune > 0) {
+  if (E && E.single && E.single.missImmune > 0) {
     E.single.missImmune--;
     addToast('🛡️ 漏球豁免（剩 ' + E.single.missImmune + ' 次）');
     return;
@@ -2563,23 +2975,23 @@ function registerMiss() {
 
 /* ===== 肉鸽三选一 ===== */
 var REWARDS_PERM = [
-  { id:'maxMiss', name:'漏球上限 +2', desc:'最大漏球容错永久 +2（爱心可继续叠加）', tag:'永久', apply:function(b){ S.endless.perm.maxMiss += Math.round(2 * (1 + b)); } },
-  { id:'speed', name:'移速 +10%', desc:'基础移动速度永久 +10%', tag:'永久', apply:function(b){ S.endless.perm.speed += 1 * (1 + b); } },
-  { id:'shootCD', name:'射击冷却 -0.05s', desc:'射击冷却永久缩短 0.05 秒（最低 0.12s）', tag:'永久', apply:function(b){ S.endless.perm.shootCD += 1 * (1 + b); } },
-  { id:'pierce', name:'穿透 +2', desc:'箭矢穿透目标永久 +2', tag:'永久', apply:function(b){ S.endless.perm.pierce += Math.round(2 * (1 + b)); } },
-  { id:'ultRisk', name:'大招风险增幅 -5%', desc:'爆发技能风险副作用永久 -5%', tag:'永久', apply:function(b){ S.endless.perm.ultRisk += 1 * (1 + b); } },
-  { id:'spreadCap', name:'连发上限 +2', desc:'连发道具充能上限永久 +2', tag:'永久', apply:function(b){ S.endless.perm.spreadCap += Math.round(2 * (1 + b)); } },
-  { id:'riskDecay', name:'风险衰减 +1%/秒', desc:'出血风险自然衰减永久 +1%/秒', tag:'永久', apply:function(b){ S.endless.perm.riskDecay += 1 * (1 + b); } },
-  { id:'asnDecay', name:'Asn 消耗 -0.3/秒', desc:'血清 Asn 自然衰减永久减慢 0.3/秒', tag:'永久', apply:function(b){ S.endless.perm.asnDecay += 1 * (1 + b); } },
-  { id:'manaRegen', name:'蓝量恢复 +1/秒', desc:'药物活性恢复永久 +1/秒', tag:'永久', apply:function(b){ S.endless.perm.manaRegen += 1 * (1 + b); } }
+  { id:'maxMiss', name:'漏球上限 +2', enName:'+2 Miss Limit', desc:'最大漏球容错永久 +2（爱心可继续叠加）', enDesc:'+2 permanent miss tolerance (hearts still stack)', tag:'永久', apply:function(b){ S.endless.perm.maxMiss += Math.round(2 * (1 + b)); } },
+  { id:'speed', name:'移速 +10%', enName:'+10% Speed', desc:'基础移动速度永久 +10%', enDesc:'+10% permanent move speed', tag:'永久', apply:function(b){ S.endless.perm.speed += 1 * (1 + b); } },
+  { id:'shootCD', name:'射击冷却 -0.05s', enName:'-0.05s Shoot CD', desc:'射击冷却永久缩短 0.05 秒（最低 0.12s）', enDesc:'Permanent -0.05s shoot cooldown (min 0.12s)', tag:'永久', apply:function(b){ S.endless.perm.shootCD += 1 * (1 + b); } },
+  { id:'pierce', name:'穿透 +2', enName:'+2 Pierce', desc:'箭矢穿透目标永久 +2', enDesc:'+2 permanent arrow pierce', tag:'永久', apply:function(b){ S.endless.perm.pierce += Math.round(2 * (1 + b)); } },
+  { id:'ultRisk', name:'大招风险增幅 -5%', enName:'-5% Ult Risk', desc:'爆发技能风险副作用永久 -5%', enDesc:'Permanent -5% ultimate risk side-effect', tag:'永久', apply:function(b){ S.endless.perm.ultRisk += 1 * (1 + b); } },
+  { id:'spreadCap', name:'连发上限 +2', enName:'+2 Spread Cap', desc:'连发道具充能上限永久 +2', enDesc:'+2 permanent spread charge cap', tag:'永久', apply:function(b){ S.endless.perm.spreadCap += Math.round(2 * (1 + b)); } },
+  { id:'riskDecay', name:'风险衰减 +1%/秒', enName:'+1%/s Risk Decay', desc:'出血风险自然衰减永久 +1%/秒', enDesc:'+1%/s permanent risk decay', tag:'永久', apply:function(b){ S.endless.perm.riskDecay += 1 * (1 + b); } },
+  { id:'asnDecay', name:'Asn 消耗 -0.3/秒', enName:'-0.3/s Asn Decay', desc:'血清 Asn 自然衰减永久减慢 0.3/秒', enDesc:'Permanent -0.3/s serum Asn decay', tag:'永久', apply:function(b){ S.endless.perm.asnDecay += 1 * (1 + b); } },
+  { id:'manaRegen', name:'蓝量恢复 +1/秒', enName:'+1/s Mana Regen', desc:'药物活性恢复永久 +1/秒', enDesc:'+1/s permanent mana regen', tag:'永久', apply:function(b){ S.endless.perm.manaRegen += 1 * (1 + b); } }
 ];
 var REWARDS_SINGLE = [
-  { id:'clearRisk', name:'净化·免疫', desc:'立即清空出血风险并 5 秒免疫增长', tag:'单次', apply:function(){ S.risk = 0; S.endless.single.riskImmune = 5; } },
-  { id:'missX2', name:'漏球豁免 ×2', desc:'接下来 2 次漏球不计数', tag:'单次', apply:function(){ S.endless.single.missImmune += 2; } },
-  { id:'weaken', name:'敌人削弱', desc:'下一波敌人数量减半、移速降低 20%', tag:'单次', apply:function(){ S.endless.single.weaken = true; } },
-  { id:'speedBurst', name:'疾风', desc:'下一波移速 +50% 且冲刺冷却减半', tag:'单次', apply:function(){ S.endless.single.speedBurst = true; } },
-  { id:'spread8', name:'连发 +8 次', desc:'立即获得 8 次连发机会', tag:'单次', apply:function(){ S.spreadCharges += 8; } },
-  { id:'extraArrow', name:'额外箭矢', desc:'下一波每次射击额外 +2 支箭', tag:'单次', apply:function(){ S.endless.single.extraArrows = true; } }
+  { id:'clearRisk', name:'净化·免疫', enName:'Purify Immunity', desc:'立即清空出血风险并 5 秒免疫增长', enDesc:'Clear risk now, immune to growth for 5s', tag:'单次', apply:function(){ S.risk = 0; S.endless.single.riskImmune = 5; } },
+  { id:'missX2', name:'漏球豁免 ×2', enName:'Miss Immunity x2', desc:'接下来 2 次漏球不计数', enDesc:'Next 2 misses don\'t count', tag:'单次', apply:function(){ S.endless.single.missImmune += 2; } },
+  { id:'weaken', name:'敌人削弱', enName:'Weaken Enemies', desc:'下一波敌人数量减半、移速降低 20%', enDesc:'Next wave: half enemies, -20% speed', tag:'单次', apply:function(){ S.endless.single.weaken = true; } },
+  { id:'speedBurst', name:'疾风', enName:'Speed Burst', desc:'下一波移速 +50% 且冲刺冷却减半', enDesc:'Next wave: +50% speed, dash CD halved', tag:'单次', apply:function(){ S.endless.single.speedBurst = true; } },
+  { id:'spread8', name:'连发 +8 次', enName:'+8 Spread Charges', desc:'立即获得 8 次连发机会', enDesc:'Instantly gain 8 spread charges', tag:'单次', apply:function(){ S.spreadCharges += 8; } },
+  { id:'extraArrow', name:'额外箭矢', enName:'Extra Arrows', desc:'下一波每次射击额外 +2 支箭', enDesc:'Next wave: +2 arrows per shot', tag:'单次', apply:function(){ S.endless.single.extraArrows = true; } }
 ];
 function prepareReward() {
   var E = S.endless;
@@ -2601,8 +3013,9 @@ function showRewardUI() {
   E.reward.options.forEach(function (r, idx) {
     var card = document.createElement('div');
     card.className = 'rCard';
-    card.innerHTML = '<div class="rcName">' + r.name + '</div><div class="rcDesc">' + r.desc + '</div>' +
-      '<span class="rcTag ' + (r.tag === '永久' ? 'perm' : 'single') + '">' + r.tag + '</span>';
+    var tg = LANG === 'en' ? (r.tag === '永久' ? 'Permanent' : 'One-time') : r.tag;
+    card.innerHTML = '<div class="rcName">' + (LANG === 'en' ? (r.enName || r.name) : r.name) + '</div><div class="rcDesc">' + (LANG === 'en' ? (r.enDesc || r.desc) : r.desc) + '</div>' +
+      '<span class="rcTag ' + (r.tag === '永久' ? 'perm' : 'single') + '">' + tg + '</span>';
     card.addEventListener('click', function () {
       if (r.tag === '永久') E.permaPicks++;
       r.apply(E.reward.boost);
@@ -2629,15 +3042,15 @@ function showResultEndless() {
   el.resultPanel.style.display = '';
   el.overlay.style.display = 'flex';
   el.resultPanel.className = 'panel fail';
-  el.resTitle.textContent = '无尽模式结束';
+  el.resTitle.textContent = t('endlessEndTitle');
   el.resSub.textContent = S.failReason || '';
   el.resBody.innerHTML = '无限续杯的高压生存到此为止。每 5 波 Boss 战、每波后的肉鸽三选一都在等你挑战更高分。';
   el.resStat.innerHTML =
-    '<div class="it"><div class="v">' + E.wave + '</div><div class="k">最终波次</div></div>' +
-    '<div class="it"><div class="v">' + E.score + '</div><div class="k">本局得分</div></div>' +
-    '<div class="it"><div class="v">' + E.best + '</div><div class="k">历史最高分</div></div>' +
-    '<div class="it"><div class="v">' + S.kills + '</div><div class="k">击杀数</div></div>';
-  el.resBtns.innerHTML = '<button class="pbtn main" id="resRetry">再来一局</button><button class="pbtn ghost" id="resBack">返回选关</button>';
+    '<div class="it"><div class="v">' + E.wave + '</div><div class="k">' + t('endlessWave') + '</div></div>' +
+    '<div class="it"><div class="v">' + E.score + '</div><div class="k">' + t('endlessScore') + '</div></div>' +
+    '<div class="it"><div class="v">' + E.best + '</div><div class="k">' + t('endlessBest') + '</div></div>' +
+    '<div class="it"><div class="v">' + S.kills + '</div><div class="k">' + t('endlessKills') + '</div></div>';
+  el.resBtns.innerHTML = '<button class="pbtn main" id="resRetry">' + t('resAgain') + '</button><button class="pbtn ghost" id="resBack">' + t('resBack') + '</button>';
   document.getElementById('resRetry').addEventListener('click', startEndless);
   document.getElementById('resBack').addEventListener('click', function () { exitEndless(); showMenu(); });
 }
@@ -2646,6 +3059,182 @@ function exitEndless() {
   S.endless = null;
   el.exitBtn.style.display = 'none';
   el.rewardPanel.style.display = 'none';
+}
+
+/* ================= v4.2 语言切换应用 ================= */
+function applyLang() {
+  var q = document.querySelectorAll('[data-i18n]');
+  for (var i = 0; i < q.length; i++) q[i].innerHTML = t(q[i].getAttribute('data-i18n'));
+  if (el.titleMain) el.titleMain.textContent = t('title_main');
+  if (el.titleSub) el.titleSub.textContent = t('title_sub');
+  if (el.tStart) el.tStart.textContent = t('tStart');
+  if (el.tEndless) el.tEndless.textContent = t('tEndless');
+  if (el.tExit) el.tExit.textContent = t('tExit');
+  if (el.btnLang) el.btnLang.textContent = t('btnLang');
+  if (el.btnLeader) el.btnLeader.textContent = t('btnLeader');
+  if (el.btnMobile) el.btnMobile.textContent = isMobile ? t('btnMobileOff') : t('btnMobile');
+  if (el.btnSave) el.btnSave.textContent = t('btnSave');
+  if (el.teamBtn) el.teamBtn.textContent = t('teamBtn');
+  if (document.getElementById('teamModalTitle')) document.getElementById('teamModalTitle').textContent = t('teamModalTitle');
+  if (document.getElementById('teamModalSub')) document.getElementById('teamModalSub').textContent = t('teamModalSub');
+  if (el.tabEasy) { el.tabEasy.textContent = t('tabEasy'); el.tabEasy.title = t('easyTip'); }
+  if (el.tabNormal) el.tabNormal.textContent = t('tabNormal');
+  if (el.tabHard) el.tabHard.textContent = t('tabHard');
+  if (el.endlessBtn) el.endlessBtn.textContent = t('endlessBtn');
+  if (el.bestiaryBtn) el.bestiaryBtn.textContent = t('bestiaryBtn');
+  if (el.tutAgainBtn) el.tutAgainBtn.textContent = t('tutAgain');
+  if (el.menuPanel) {
+    var h1 = el.menuPanel.querySelector('h1'); if (h1) h1.textContent = t('menuTitle');
+    var sub = el.menuPanel.querySelector('.sub'); if (sub) sub.textContent = t('menuSub');
+  }
+  if (el.hint) el.hint.innerHTML = t('hint1') + '<br>' + t('hint2');
+  if (el.menuHint) el.menuHint.innerHTML = t('menuHintA') + '<br>' + t('menuHintB');
+  if (el.bestiaryPanel) {
+    var bh = el.bestiaryPanel.querySelector('h1'); if (bh) bh.textContent = t('bestiaryBtn');
+    var bb = el.bestiaryPanel.querySelector('.menuBtns .pbtn');
+    if (bb) bb.textContent = t('backSelect');
+  }
+  if (el.shootHint) el.shootHint.textContent = t('mShootHint');
+  if (el.dashBtnT) el.dashBtnT.innerHTML = '💨<br>' + t('mDash');
+  if (el.pauseMenu) {
+    var pbs = el.pauseMenu.querySelectorAll('.pauseBtns .pBtn');
+    if (pbs[0]) pbs[0].textContent = t('pResume');
+    if (pbs[1]) pbs[1].textContent = t('pRestart');
+    if (pbs[2]) pbs[2].textContent = t('pQuit');
+    var ph = el.pauseMenu.querySelector('.pauseHint'); if (ph) ph.textContent = t('pauseHint');
+    if (el.pauseYes) el.pauseYes.textContent = t('pYes');
+    if (el.pauseNo) el.pauseNo.textContent = t('pNo');
+  }
+  if (el.sciencePanel) { var sh = el.sciencePanel.querySelector('h1'); if (sh) sh.innerHTML = t('sci_title'); }
+  if (el.sciOk) el.sciOk.textContent = t('sciOk');
+  if (el.tutorialPanel) { var th = el.tutorialPanel.querySelector('h1'); if (th) th.textContent = t('tut_title'); }
+  if (el.tutStart) el.tutStart.textContent = t('tutStart');
+  if (document.getElementById('leaderTitle')) document.getElementById('leaderTitle').textContent = t('leaderTitle');
+  if (document.getElementById('leaderSub')) document.getElementById('leaderSub').textContent = t('leaderSub');
+  if (document.getElementById('leaderReset')) document.getElementById('leaderReset').textContent = t('leaderReset');
+  if (document.getElementById('leaderBack')) document.getElementById('leaderBack').textContent = t('leaderBack');
+  if (document.getElementById('saveTitle')) document.getElementById('saveTitle').textContent = t('saveTitle');
+  if (document.getElementById('saveSub')) document.getElementById('saveSub').textContent = t('saveSub');
+  if (document.getElementById('saveReset')) document.getElementById('saveReset').textContent = t('saveReset');
+  if (document.getElementById('saveBack')) document.getElementById('saveBack').textContent = t('saveBack');
+}
+function setLang(l) {
+  LANG = l;
+  SETTINGS.lang = l;
+  save();                       /* godMode 时被拦截：语言不持久 */
+  applyLang();
+  if (S.status === 'menu') buildGrid();
+  addToast('🌐 ' + (l === 'zh' ? '已切换为中文' : 'Language switched to English'));
+}
+
+/* ================= v4.2 科普 / 教程流程 ================= */
+var pendingStartDiff = 'normal';   /* 教程完成后进入第一关所用难度 */
+function showScience() {
+  S.status = 'science';
+  el.titlePanel.style.display = 'none';
+  el.sciencePanel.style.display = 'flex';
+}
+function showTutorial() {
+  S.status = 'tutorial';
+  el.sciencePanel.style.display = 'none';
+  el.tutorialPanel.style.display = 'flex';
+}
+function startFromTutorial() {
+  el.tutorialPanel.style.display = 'none';
+  startLevel(1, pendingStartDiff);
+}
+function maybeShowIntro() { showTitle(); }   /* v4.2 fix：启动不再自动弹科普；改为点击第 1 关且无通关记录时触发 */
+
+/* ================= v4.2 排行榜 ================= */
+function showLeader() {
+  var html = '';
+  if (godMode) html = '<p style="color:#ffd76a">🛡️ GOD MODE · ' + t('godBlockSave') + '</p>';
+  if (!LEADER.length) {
+    html += '<p>' + t('emptyLeader') + '</p>';
+  } else {
+    LEADER.forEach(function (r, i) {
+      html += '<div class="ldRow' + (i === 0 ? ' me' : '') + '"><span class="rk">#' + (i + 1) + '</span>' +
+        '<span class="rv">' + r.score + '</span><span class="rv">' + r.wave + ' ' + t('ldWaves') + '</span>' +
+        '<span class="rs">' + t('ldKills') + ' ' + r.kills + ' · ' + t('ldSaves') + ' ' + r.saves + '<br>' + (r.date || '') + '</span></div>';
+    });
+  }
+  el.leaderList.innerHTML = html;
+  el.leaderPanel.style.display = 'flex';
+}
+
+/* ================= v4.2 存档管理 ================= */
+function showSavePanel() {
+  var info = t('saveInfoFmt')
+    .replace('{c}', PROGRESS.cleared.length ? PROGRESS.cleared.join(',') : '—')
+    .replace('{h}', PROGRESS.hard.length ? PROGRESS.hard.join(',') : '—')
+    .replace('{b}', loadEndlessBest());
+  if (godMode) info += '<br>🛡️ GOD MODE · ' + t('godBlockSave');
+  el.saveInfo.innerHTML = info;
+  el.savePanel.style.display = 'flex';
+}
+
+/* ================= v4.2 作弊码 ================= */
+var cheatTimer = 0;
+function showCheatHint(text) {
+  el.cheatHint.textContent = text;
+  el.cheatHint.style.opacity = '1';
+  clearTimeout(cheatTimer);
+  cheatTimer = setTimeout(function () { el.cheatHint.style.opacity = '0'; }, 3400);
+}
+function hideCheatHint() { el.cheatHint.style.opacity = '0'; }
+function handleCheatInput(ch) {
+  if (!ch || ch.length > 1 || !/[A-Za-z0-9]/.test(ch)) return false;
+  cheatBuffer = (cheatBuffer + ch.toUpperCase()).slice(-16);
+  if (cheatBuffer.indexOf('ASPROUT') >= 0) {            /* 解锁全部关卡 + 无尽 */
+    cheatBuffer = '';
+    for (var n = 1; n <= 9; n++) if (PROGRESS.cleared.indexOf(n) < 0) PROGRESS.cleared.push(n);
+    save();
+    showCheatHint('✨ ' + t('cheatUnlock'));
+    if (el.tEndless) el.tEndless.classList.remove('locked');
+    return true;
+  }
+  if (cheatBuffer.indexOf('VIVIMYFATHER') >= 0) {       /* 无敌模式切换 */
+    cheatBuffer = '';
+    godMode = !godMode;
+    if (el.godBadge) el.godBadge.style.display = godMode ? 'flex' : 'none';
+    showCheatHint(godMode ? ('✨ ' + t('cheatGodOn')) : t('cheatGodOff'));
+    return true;
+  }
+  return false;
+}
+
+/* ================= v4.2 移动端触控 ================= */
+var joy = { active:false, id:null, cx:0, cy:0 };
+var swipe = { active:false, id:null, lx:0, ly:0 };
+var touchIdle = 0;
+function touchWake() {
+  if (!isMobile) return;
+  el.touchUI.classList.remove('faded');
+  touchIdle = 0;
+}
+/* 触控层只在局内显示（标题/选关/结算界面不显示摇杆与按键） */
+function updateTouchUI() {
+  el.touchUI.classList.toggle('on', isMobile && S.status === 'playing');
+}
+function lockLandscape() {
+  try { if (screen.orientation && screen.orientation.lock) { var p = screen.orientation.lock('landscape'); if (p && p.catch) p.catch(function () {}); } } catch (e) {}
+}
+function enterMobile() {
+  isMobile = true;
+  SETTINGS.mobile = true;          /* v4.2 fix：移动端配置持久化 */
+  save();
+  lockLandscape();
+  applyLang();                     /* 按钮文本切换 */
+  updateTouchUI();                 /* 停留在当前界面（标题/选关），不进游戏 */
+}
+function exitMobile() {
+  isMobile = false;
+  SETTINGS.mobile = false;
+  save();
+  keys.KeyA = keys.KeyD = keys.KeyW = keys.KeyS = false;
+  try { if (screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch (e) {}
+  applyLang();
+  updateTouchUI();
 }
 
 /* ================= v4.1 标题页 ================= */
@@ -2709,7 +3298,13 @@ function showTitle() {
   el.overlay.style.display = 'none';
   el.exitBtn.style.display = 'none';
   el.pauseMenu.style.display = 'none';
+  el.sciencePanel.style.display = 'none';
+  el.tutorialPanel.style.display = 'none';
+  el.leaderPanel.style.display = 'none';
+  el.savePanel.style.display = 'none';
   el.tEndless.classList.toggle('locked', !isCleared(9));
+  applyLang();
+  updateTouchUI();   /* 标题页不显示触控层（保留移动端配置） */
   updateTitleFocus();
 }
 function updateTitleFocus() {
@@ -2727,8 +3322,8 @@ function fadeOutTitle(cb) {
 }
 function titleActivate() {
   if (titleFocus === 0) { fadeOutTitle(showMenu); }
-  else if (titleFocus === 1) { if (isCleared(9)) fadeOutTitle(startEndless); else addToast('🔒 需通关全部 9 关普通难度解锁'); }
-  else { try { window.close(); } catch (e) {} addToast('浏览器限制无法自动关闭窗口，请手动关闭'); }
+  else if (titleFocus === 1) { if (isCleared(9)) fadeOutTitle(startEndless); else addToast(t('lockEndless')); }
+  else { try { window.close(); } catch (e) {} addToast(t('exitBlocked')); }
 }
 
 /* ================= v4.1 局中暂停 ================= */
@@ -2782,7 +3377,7 @@ function pauseActivate() {
   if (a === 'resume') { resumeGame(); }
   else {
     pauseConfirmMode = a;
-    el.pauseConfirmText.textContent = (a === 'restart') ? '确定重新开始当前' + (S.mode === 'endless' ? '无尽模式' : '关卡') + '？' : '确定退出到选关页面？';
+    el.pauseConfirmText.textContent = (a === 'restart') ? t('pConfirmRestart').replace('{m}', S.mode === 'endless' ? '无尽模式' : '关卡') : t('pConfirmQuit');
     el.pauseConfirm.style.display = 'block';
     pauseFocus = 0;
     updatePauseFocus();
@@ -2806,6 +3401,11 @@ function loop(ts) {
     render();
     updateHUD();
   }
+  if (isMobile) {                     /* v4.2 触控层无操作 5s 淡出，触摸重现 */
+    touchIdle++;
+    if (touchIdle >= 300) { el.touchUI.classList.add('faded'); touchIdle = 0; }
+  }
+  updateTouchUI();                    /* 触控层只在局内显示 */
   requestAnimationFrame(loop);
 }
 
@@ -2813,31 +3413,138 @@ function loop(ts) {
 grabEls();
 loadSave();
 loadImages();
+applyLang();                       /* v4.2 应用已保存语言 */
 el.dashBtn.addEventListener('click', tryDash);
 el.shootBtn.addEventListener('click', function () { fireArrow(S.player.dirX, S.player.dirY); });
 el.skillBtn.addEventListener('click', castSkill);
 document.getElementById('bestiaryBtn').addEventListener('click', showBestiary);
 document.getElementById('bestiaryBack').addEventListener('click', showMenu);
+el.tabEasy.addEventListener('click', function () { S.menuDiff = 'easy'; buildGrid(); });
 el.tabNormal.addEventListener('click', function () { S.menuDiff = 'normal'; buildGrid(); });
 el.tabHard.addEventListener('click', function () { S.menuDiff = 'hard'; buildGrid(); });
 el.endlessBtn.addEventListener('click', startEndless);
 el.exitBtn.addEventListener('click', function () {
   if (S.mode !== 'endless' || !S.endless) return;
   var E = S.endless;
-  E.score = S.kills * 10 + (E.wave - 1) * 100;      /* 退出记录本次成绩 */
+  E.score = endlessScore();         /* v4.2 新得分公式 */
   if (E.score > E.best) { E.best = E.score; saveEndlessBest(E.best); }
+  if (!E.recorded) { E.recorded = true; addLeader({ wave: E.wave, score: E.score, kills: S.kills, saves: S.saves || 0, date: new Date().toLocaleDateString() }); }
   exitEndless();
   showMenu();
 });
+/* ===== v4.2 标题页功能按钮 ===== */
+el.btnLang.addEventListener('click', function () { setLang(LANG === 'zh' ? 'en' : 'zh'); });
+el.btnLeader.addEventListener('click', showLeader);
+el.btnMobile.addEventListener('click', function () { if (isMobile) exitMobile(); else enterMobile(); });
+el.btnSave.addEventListener('click', showSavePanel);
+/* 排行榜 / 存档管理（含二次确认） */
+var leaderConfirmT = 0, saveConfirmT = 0;
+el.leaderBack.addEventListener('click', function () { el.leaderPanel.style.display = 'none'; });
+el.saveBack.addEventListener('click', function () { el.savePanel.style.display = 'none'; });
+el.leaderReset.addEventListener('click', function () {
+  if (leaderConfirmT <= 0) {
+    leaderConfirmT = 1;
+    el.leaderReset.textContent = '⚠️ ' + t('leaderResetConfirm');
+    setTimeout(function () { leaderConfirmT = 0; el.leaderReset.textContent = t('leaderReset'); }, 2600);
+    return;
+  }
+  LEADER = []; saveLeader(); leaderConfirmT = 0;
+  el.leaderReset.textContent = t('leaderReset');
+  showLeader();
+});
+el.saveReset.addEventListener('click', function () {
+  if (saveConfirmT <= 0) {
+    saveConfirmT = 1;
+    el.saveReset.textContent = '⚠️ ' + t('saveResetConfirm');
+    setTimeout(function () { saveConfirmT = 0; el.saveReset.textContent = t('saveReset'); }, 2600);
+    return;
+  }
+  resetAllSave(); saveConfirmT = 0;
+  el.saveReset.textContent = t('saveReset');
+  el.savePanel.style.display = 'none';
+  addToast('🗑️ ' + (LANG === 'zh' ? '存档已重置' : 'Save data reset'));
+  maybeShowIntro();
+});
+/* ===== v4.2 科普 / 教程 ===== */
+el.sciOk.addEventListener('click', function () { SETTINGS.seenScience = true; save(); showTutorial(); });
+el.tutStart.addEventListener('click', startFromTutorial);
+el.tutAgainBtn.addEventListener('click', function () { showScience(); });
+/* ===== v4.2 移动端触控 ===== */
+el.joystickZone.addEventListener('touchstart', function (e) {
+  if (e.touches.length !== 1) return;
+  touchWake();
+  var t = e.touches[0];
+  var r = el.joystickZone.getBoundingClientRect();
+  var x = (t.clientX - r.left) * (W / r.width), y = (t.clientY - r.top) * (H / r.height);
+  joy.active = true; joy.id = t.identifier; joy.cx = x; joy.cy = y;
+  el.joyBase.style.left = x + 'px'; el.joyBase.style.top = y + 'px';
+  el.joyKnob.style.left = x + 'px'; el.joyKnob.style.top = y + 'px';
+  el.joyBase.style.display = 'block'; el.joyKnob.style.display = 'block';
+  e.preventDefault();
+});
+el.joystickZone.addEventListener('touchmove', function (e) {
+  if (!joy.active) return;
+  touchWake();
+  for (var jm = 0; jm < e.touches.length; jm++) if (e.touches[jm].identifier === joy.id) {
+    var t = e.touches[jm];
+    var r = el.joystickZone.getBoundingClientRect();
+    var x = (t.clientX - r.left) * (W / r.width), y = (t.clientY - r.top) * (H / r.height);
+    var dx = x - joy.cx, dy = y - joy.cy, d = Math.sqrt(dx * dx + dy * dy) || 1;
+    var max = 55;
+    if (d > max) { dx = dx / d * max; dy = dy / d * max; }
+    el.joyKnob.style.left = (joy.cx + dx) + 'px'; el.joyKnob.style.top = (joy.cy + dy) + 'px';
+    keys.KeyA = dx < -14; keys.KeyD = dx > 14;   /* 摇杆向量 → 模拟按键驱动既有移动逻辑 */
+    keys.KeyW = dy < -14; keys.KeyS = dy > 14;
+    e.preventDefault();
+    return;
+  }
+});
+function joyEnd() {
+  joy.active = false;
+  el.joyBase.style.display = 'none'; el.joyKnob.style.display = 'none';
+  keys.KeyA = keys.KeyD = keys.KeyW = keys.KeyS = false;
+}
+el.joystickZone.addEventListener('touchend', joyEnd);
+el.joystickZone.addEventListener('touchcancel', joyEnd);
+el.shootZone.addEventListener('touchstart', function (e) {
+  if (e.touches.length !== 1) return;
+  touchWake();
+  var t = e.touches[0];
+  swipe.active = true; swipe.id = t.identifier; swipe.lx = t.clientX; swipe.ly = t.clientY;
+  e.preventDefault();
+});
+el.shootZone.addEventListener('touchmove', function (e) {
+  if (!swipe.active) return;
+  touchWake();
+  for (var sm = 0; sm < e.touches.length; sm++) if (e.touches[sm].identifier === swipe.id) {
+    var t = e.touches[sm];
+    var dx = t.clientX - swipe.lx, dy = t.clientY - swipe.ly;
+    if (Math.sqrt(dx * dx + dy * dy) > 30) {      /* 滑动超 30px 朝滑动方向射一箭 */
+      var dd = Math.sqrt(dx * dx + dy * dy) || 1;
+      fireArrow(dx / dd, dy / dd);
+      swipe.lx = t.clientX; swipe.ly = t.clientY; /* 重置起点：连续滑动连续射击 */
+    }
+    e.preventDefault();
+    return;
+  }
+});
+el.shootZone.addEventListener('touchend', function () { swipe.active = false; });
+el.shootZone.addEventListener('touchcancel', function () { swipe.active = false; });
+el.dashBtnT.addEventListener('touchstart', function (e) { e.preventDefault(); touchWake(); tryDash(); });
+el.dashBtnT.addEventListener('click', function () { if (isMobile) tryDash(); });
+el.ultBtn.addEventListener('touchstart', function (e) { e.preventDefault(); touchWake(); castSkill(); });
+el.ultBtn.addEventListener('click', function () { if (isMobile) castSkill(); });
+el.pauseBtnT.addEventListener('touchstart', function (e) { e.preventDefault(); touchWake(); pauseGame(); });
+el.pauseBtnT.addEventListener('click', function () { if (isMobile) pauseGame(); });
 /* ===== v4.1 标题页绑定 ===== */
 el.teamBtn.addEventListener('click', function () { el.teamModal.style.display = 'flex'; });
 el.teamModal.addEventListener('click', function (e) { if (e.target === el.teamModal) el.teamModal.style.display = 'none'; });
 el.tStart.addEventListener('click', function () { fadeOutTitle(showMenu); });
 el.tEndless.addEventListener('click', function () {
   if (isCleared(9)) fadeOutTitle(startEndless);
-  else addToast('🔒 需通关全部 9 关普通难度解锁');
+  else addToast(t('lockEndless'));
 });
-el.tExit.addEventListener('click', function () { try { window.close(); } catch (e) {} addToast('浏览器限制无法自动关闭窗口，请手动关闭'); });
+el.tExit.addEventListener('click', function () { try { window.close(); } catch (e) {} addToast(t('exitBlocked')); });
 for (var ti = 0; ti < 3; ti++) (function (idx) {
   document.getElementById(TBTN_IDS[idx]).addEventListener('mouseenter', function () { titleFocus = idx; updateTitleFocus(); });
 })(ti);
@@ -2859,7 +3566,8 @@ document.getElementById('titleBg').addEventListener('mousemove', function (e) {
   el.pauseNo.addEventListener('click', function () { pauseFocus = 1; pauseActivate(); });
 })();
 curLevelN = 1;
-showTitle();
+maybeShowIntro();   /* v4.2 fix：启动直接进标题页；教程在点击第 1 关时触发 */
+if (SETTINGS.mobile) lockLandscape();   /* 上次移动端配置 → 沿用（停留在标题页） */
 fit();
 requestAnimationFrame(loop);
 document.body.setAttribute('data-ready', '1');

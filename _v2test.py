@@ -10,7 +10,7 @@ TEST_JS = r'''
 /* ==== AUTO TEST HOOK v3.1 ==== */
 var __R = {};
 function __log(n, ok, d){ __R[n] = {ok:!!ok, d:d||''}; }
-function __fresh(n){ startLevel(n || 1); S.balls = []; S.ballTimer = 999; S.itemTimers = {}; }
+function __fresh(n){ el.sciencePanel.style.display='none'; el.tutorialPanel.style.display='none'; SETTINGS.seenScience = true; PROGRESS.cleared = PROGRESS.cleared || []; startLevel(n || 1); S.balls = []; S.ballTimer = 999; S.itemTimers = {}; }
 (function(){
   var i;
   try {
@@ -454,12 +454,12 @@ function __fresh(n){ startLevel(n || 1); S.balls = []; S.ballTimer = 999; S.item
   __log('reward_3cards_perm', hasReward && endlessMoveMul()>1 && (!permCard || S.endless.permaPicks===1),
     'cards='+(S.endless.reward?S.endless.reward.options.length:0)+' permCard='+(permCard?permCard.id:'none')+' perma='+S.endless.permaPicks);
 
-  /* 46 无尽结束（漏球满）记录最高分 */
+  /* 46 无尽结束（漏球满）→ v4.2 新公式结算并入榜（高漏球时得分归 0 为预期） */
   S.endless.phase = 'fight';          /* 从奖励阶段回到战斗，再触发失败 */
   S.endless.single.missImmune = 0;
   S.misses = 99;
   update(1/60);
-  __log('endless_end_score', S.status==='fail' && S.endless.score>0 && S.endless.best>0, 'score='+S.endless.score+' best='+S.endless.best);
+  __log('endless_end_score', S.status==='fail' && S.endless.recorded===true && S.endless.score>=0, 'score='+S.endless.score+' best='+S.endless.best);
 
   /* ===== v4.1 ===== */
   /* 47 箭矢追踪：75px 内启动并锁定最近目标 */
@@ -509,6 +509,117 @@ function __fresh(n){ startLevel(n || 1); S.balls = []; S.ballTimer = 999; S.item
   var mOpen = el.teamModal.style.display==='flex';
   document.dispatchEvent(new KeyboardEvent('keydown', {code:'Escape'}));
   __log('team_modal', mOpen && el.teamModal.style.display==='none', 'open='+mOpen+' after='+el.teamModal.style.display);
+
+  /* ===== v4.2 ===== */
+  /* 51 简单模式：初始解锁 / 间隔 10.5s / 上限 9 / 数值宽松 / 通关不解锁 */
+  startLevel(1, 'easy');
+  __log('easy_init', S.enemies.length===3 && isEasy(), 'n='+S.enemies.length);
+  __log('easy_interval', Math.abs(currentSpawnInterval()-10.5)<0.01, 'iv='+currentSpawnInterval().toFixed(2));
+  S.enemies = [];
+  for(i=0;i<20;i++) spawnEnemy();
+  __log('easy_cap9', aliveCount()===9, 'alive='+aliveCount());
+  __log('easy_skills', skillCost()===20 && riskSideVal()===15 && shootCDVal()===0.25, 'cost='+skillCost()+' rs='+riskSideVal()+' cd='+shootCDVal());
+  __log('easy_speeds', enemySpeedMul()===0.7 && playerSpeedMul()===1.1, 'e='+enemySpeedMul()+' p='+playerSpeedMul());
+  PROGRESS.cleared = [];
+  startLevel(1, 'easy');
+  S.time = 0.01;
+  update(1/60);
+  __log('easy_no_unlock', S.status==='win' && !isCleared(1), 'cleared1='+isCleared(1));
+
+  /* 52 科普页 / 教程页流程（点击第 1 关触发，不再启动弹出） */
+  SETTINGS.seenScience = false;
+  PROGRESS.cleared = [];
+  showTitle();
+  startLevel(1);
+  __log('science_on_click', S.status==='science' && el.sciencePanel.style.display==='flex', 'status='+S.status);
+  el.sciOk.click();
+  __log('science_ok', SETTINGS.seenScience===true && S.status==='tutorial' && el.tutorialPanel.style.display==='flex', 'seen='+SETTINGS.seenScience+' st='+S.status);
+  el.tutStart.click();
+  __log('tutorial_start', S.status==='playing' && el.tutorialPanel.style.display==='none' && curLevelN===1, 'st='+S.status+' lvl='+curLevelN);
+  /* 有通关记录后不再弹教程 */
+  PROGRESS.cleared = [1];
+  showMenu();
+  startLevel(1);
+  __log('tutorial_skip_cleared', S.status==='playing' && el.sciencePanel.style.display==='none', 'st='+S.status);
+  SETTINGS.seenScience = true;
+
+  /* 53 语言切换 */
+  showTitle();
+  __log('lang_zh_title', el.titleMain.textContent.indexOf('饥饿围城')>=0, 't='+el.titleMain.textContent);
+  setLang('en');
+  __log('lang_en', LANG==='en' && el.tStart.textContent.indexOf('Start')>=0, 'tStart='+el.tStart.textContent);
+  setLang('zh');
+  __log('lang_back_zh', el.tStart.textContent.indexOf('开始')>=0, 'tStart='+el.tStart.textContent);
+
+  /* 54 排行榜公式与排序（波次优先、得分次之） */
+  __fresh(1);
+  S.mode='endless'; S.endless={wave:3,bossKills:1,recorded:false};
+  S.kills=10; S.saves=2; S.misses=1;
+  __log('score_formula', endlessScore()===370, 'score='+endlessScore());   /* 300+50+50+20-50=370 */
+  LEADER=[];
+  addLeader({wave:2,score:100,kills:5,saves:0,date:'d'});
+  addLeader({wave:5,score:50,kills:1,saves:0,date:'d'});
+  addLeader({wave:2,score:200,kills:9,saves:1,date:'d'});
+  __log('leader_sort', LEADER[0].wave===5 && LEADER[1].wave===2 && LEADER[1].score===200 && LEADER.length===3,
+    LEADER.map(function(x){return x.wave+':'+x.score;}).join(','));
+
+  /* 55 作弊码：ASPROUT 解锁全部 / VIVIMYFATHER 无敌（漏球免疫）+ 存档拦截 */
+  showTitle();
+  PROGRESS.cleared=[];
+  'ASPROUT'.split('').forEach(function(ch){ handleCheatInput(ch); });
+  __log('cheat_unlock', isCleared(9) && !el.tEndless.classList.contains('locked'), 'c9='+isCleared(9));
+  __log('cheat_god_off', godMode===false, 'god='+godMode);
+  'VIVIMYFATHER'.split('').forEach(function(ch){ handleCheatInput(ch); });
+  __log('cheat_god_on', godMode===true && el.godBadge.style.display==='flex', 'god='+godMode+' badge='+el.godBadge.style.display);
+  __fresh(1);
+  var m1 = S.misses;
+  registerMiss(); registerMiss();
+  __log('god_no_miss', S.misses===m1, 'miss='+S.misses);
+  godMode=false; el.godBadge.style.display='none';
+  registerMiss();
+  __log('god_off_miss', S.misses===m1+1, 'miss='+S.misses);
+
+  /* 56 重置存档 */
+  PROGRESS.cleared=[1,2]; LEADER=[{wave:1,score:1,kills:1,saves:0,date:'x'}]; SETTINGS.lang='en'; LANG='en';
+  resetAllSave();
+  __log('reset_save', PROGRESS.cleared.length===0 && LEADER.length===0 && SETTINGS.lang==='zh' && LANG==='zh', 'c='+PROGRESS.cleared.length+' l='+LEADER.length);
+
+  /* 57 选关界面 ESC 返回标题 */
+  showMenu();
+  document.dispatchEvent(new KeyboardEvent('keydown', {code:'Escape'}));
+  __log('esc_to_title', S.status==='title' && el.titlePanel.style.display==='flex', 'st='+S.status);
+
+  /* 58 移动端模式：停留在标题界面，触控层只在局内显示，配置持久化 */
+  showTitle();
+  SETTINGS.seenScience = true; PROGRESS.cleared = [1];   /* reset 测试清空了科普标记，这里恢复避免触发教程 */
+  enterMobile();
+  __log('mobile_stay_title', isMobile===true && S.status==='title' && !el.touchUI.classList.contains('on'), 'st='+S.status+' on='+el.touchUI.classList.contains('on'));
+  __log('mobile_persist_set', SETTINGS.mobile===true, 'm='+SETTINGS.mobile);
+  startLevel(1);
+  __log('mobile_touch_ingame', el.touchUI.classList.contains('on') && S.status==='playing', 'on='+el.touchUI.classList.contains('on'));
+  showMenu();
+  __log('mobile_touch_menu_off', !el.touchUI.classList.contains('on') && S.status==='menu', 'on='+el.touchUI.classList.contains('on'));
+  exitMobile();
+  __log('mobile_off', isMobile===false && SETTINGS.mobile===false && !el.touchUI.classList.contains('on'), 'm='+isMobile);
+
+  /* 59 bug 回归：制作团队弹窗 / HUD 不崩（var t 遮蔽修复） / 作弊码经键盘输入可用（S 键不被导航吞） */
+  showTitle();
+  el.teamBtn.click();
+  __log('team_modal_show', el.teamModal.style.display==='flex', 'd='+el.teamModal.style.display);
+  el.teamModal.style.display = 'none';
+  __fresh(1);
+  updateHUD();
+  __log('hud_no_crash', S.status==='playing' && el.killNum.textContent !== undefined, 'kill='+el.killNum.textContent);
+  showTitle();
+  PROGRESS.cleared = [];
+  cheatBuffer = '';
+  ['A','S','P','R','O','U','T'].forEach(function (ch) {
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'Key' + ch, key: ch }));
+  });
+  __log('cheat_keydown_asprout', isCleared(9), 'c9='+isCleared(9));
+  /* 移动端配置持久化：模拟存档后重载 */
+  isMobile = false; SETTINGS.mobile = true; save(); isMobile = false; SETTINGS.mobile = false; loadSave();
+  __log('mobile_reload', isMobile===true && SETTINGS.mobile===true, 'm='+isMobile);
 
   } catch(err) { __log('TEST_CRASH', false, (err.message||'') + ' || ' + (err.stack||'').split('\n').slice(0,6).join(' | ')); }
   var pre = document.createElement('pre');

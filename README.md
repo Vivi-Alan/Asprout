@@ -5,7 +5,7 @@
 
 ## 运行方式
 
-**双击打开 `index.html` 即可**（单文件 + `img/` 素材 + `audio/` 三首背景音乐，零外部依赖）。进度、语言、键位、音量、科普标记与无尽最高分通过 `localStorage` 持久化。
+**双击打开 `index.html` 即可**（单文件 + `img/` 素材 + `audio/` 三首背景音乐，零外部依赖）。进度、语言、键位、音量、科普标记与无尽最高分通过 `localStorage` 持久化。或通过游戏链接https://vivi-alan.github.io/Asprout/进行游玩。
 
 ## v4.3 新增
 

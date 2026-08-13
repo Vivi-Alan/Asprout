@@ -621,6 +621,83 @@ function __fresh(n){ el.sciencePanel.style.display='none'; el.tutorialPanel.styl
   isMobile = false; SETTINGS.mobile = true; save(); isMobile = false; SETTINGS.mobile = false; loadSave();
   __log('mobile_reload', isMobile===true && SETTINGS.mobile===true, 'm='+isMobile);
 
+  /* ===== v4.3 ===== */
+  /* 60 音频系统：初始化 + 界面音乐映射 + 音量 */
+  initAudio();
+  __log('audio_init', AUDIO.title===el.auTitle && AUDIO.level===el.auLevel && AUDIO.game===el.auGame, 'init='+(AUDIO.title!==null));
+  S.status='title'; __log('music_title', musicKey()==='title', musicKey());
+  S.status='menu'; __log('music_menu', musicKey()==='level', musicKey());
+  S.status='playing'; S.mode='level'; __log('music_game', musicKey()==='game', musicKey());
+  S.status='playing'; S.mode='endless'; S.endless={phase:'reward'}; __log('music_reward', musicKey()==='level', musicKey());
+  S.endless.phase='fight'; __log('music_bossfight', musicKey()==='game', musicKey());
+  SETTINGS.volume=33; applyVolume(); __log('volume_applied', Math.abs(AUDIO.title.volume-0.33)<0.001, String(AUDIO.title.volume));
+
+  /* 61 设置面板：打开 / 音量滑条 / 关闭 */
+  showTitle();
+  openSettings();
+  __log('settings_open', el.settingsPanel.style.display==='flex', el.settingsPanel.style.display);
+  el.volSlider.value=55; el.volSlider.dispatchEvent(new Event('input'));
+  __log('settings_volume', SETTINGS.volume===55 && el.volNum.textContent==='55%', SETTINGS.volume+' '+el.volNum.textContent);
+  closeSettings();
+  __log('settings_close', el.settingsPanel.style.display==='none', el.settingsPanel.style.display);
+
+  /* 62 键位自定义：默认 / 重绑 / 冲突确认 / 持久化 / 重置恢复默认 */
+  __log('bind_default', BIND.up==='KeyW' && BIND.dash==='Space' && BIND.pause==='Escape', JSON.stringify(BIND));
+  BIND.dash='KeyP'; saveKeys();
+  BIND.dash='Space'; loadKeys();
+  __log('bind_persist', BIND.dash==='KeyP', BIND.dash);
+  rebindAction='up'; doRebind('KeyO');
+  __log('bind_rebind', BIND.up==='KeyO' && rebindAction===null, BIND.up);
+  rebindAction='shoot'; doRebind('KeyO');
+  __log('bind_conflict', keyConfirmPending!==null && keyConfirmPending.conflict==='up', keyConfirmPending?keyConfirmPending.conflict:'none');
+  confirmRebind(true);
+  __log('bind_conflict_replace', BIND.shoot==='KeyO' && BIND.up===null, 'shoot='+BIND.shoot+' up='+BIND.up);
+  BIND.up='KeyO'; BIND.shoot='KeyO'; SETTINGS.keys={up:'KeyO',shoot:'KeyO'};
+  resetAllSave();
+  __log('bind_reset', BIND.up==='KeyW' && BIND.shoot==='KeyJ' && SETTINGS.volume===70, BIND.up+','+BIND.shoot+' vol='+SETTINGS.volume);
+
+  /* 63 自定义键位实际驱动移动 */
+  __fresh(1);
+  S.enemies = []; S.cells = [];   /* 清空敌人/细胞避免碰撞阻挡 */
+  S.player.x=600; S.player.y=400; S.player.tx=600; S.player.ty=400;
+  keys = {};   /* 清空前序 dispatch 残留按键 */
+  BIND.right='KeyL'; keys.KeyL=true;
+  var px0=S.player.x;
+  for(var mi=0; mi<10; mi++) update(1/60);
+  __log('bind_move_works', S.player.x>px0+25, 'dx='+(S.player.x-px0).toFixed(1));
+  keys.KeyL=false;
+
+  /* 64 每关前 5 秒敌人速度 75%（无尽不受影响） */
+  __fresh(1);
+  S.enemies = [S.enemies[0]];   /* 只留一个目标敌人，避免其他敌人抢球干扰 */
+  S.enemies[0].x=500; S.enemies[0].y=400; S.enemies[0].stun=0; S.enemies[0].hunger=0;
+  S.balls=[{x:900,y:400,r:9,wob:0,dead:false}];
+  S.time=59; var xA=S.enemies[0].x;
+  for(var ea=0;ea<30;ea++) update(1/60);
+  var dxA=S.enemies[0].x-xA;
+  S.time=50; var xB=S.enemies[0].x;
+  for(var eb=0;eb<30;eb++) update(1/60);
+  var dxB=S.enemies[0].x-xB;
+  __log('early_slow', dxA>0 && dxA<dxB*0.9, 'dxA='+dxA.toFixed(1)+' dxB='+dxB.toFixed(1));
+
+  /* 65 Boss 数值：上限 200 + 箭矢命中额外削减 2 + 信号弹额外 +15 */
+  S.mode='endless';
+  S.endless={wave:5,boss:{isBoss:true,type:'normal',hunger:100,hungerMax:200,vulnerable:false,dead:false,stun:0,flash:0,x:600,y:400},single:{},perm:{},phase:'fight'};
+  __log('boss_hungermax', S.endless.boss.hungerMax===200, String(S.endless.boss.hungerMax));
+  hitArrow(S.endless.boss, 0, 0, 0, {vx:1,vy:0});
+  __log('boss_arrow_cut', S.endless.boss.hunger===98, 'hunger='+S.endless.boss.hunger);
+  S.endless.boss.hunger=100;
+  S.cells=[{x:500,y:400,blink:0,sigT:3,timer:0,blinkColor:'#fff'}];
+  S.enemies=[S.endless.boss]; S.player.x=520; S.player.y=400;   /* Boss 需在敌人数组内才会被信号影响 */
+  updateSignals(1/60);
+  __log('boss_signal_cut', S.endless.boss.hunger===75, 'hunger='+S.endless.boss.hunger);   /* 100-25（10+15） */
+
+  /* 66 save() 持久化键位与音量（审查修复回归） */
+  BIND.dash='KeyP'; SETTINGS.volume=42; saveKeys(); save();
+  BIND.dash='Space'; SETTINGS.volume=70; SETTINGS.keys=null;
+  loadSave();
+  __log('save_persist', BIND.dash==='KeyP' && SETTINGS.volume===42, BIND.dash+' vol='+SETTINGS.volume);
+
   } catch(err) { __log('TEST_CRASH', false, (err.message||'') + ' || ' + (err.stack||'').split('\n').slice(0,6).join(' | ')); }
   var pre = document.createElement('pre');
   pre.id='__testOut'; pre.textContent = JSON.stringify(__R);

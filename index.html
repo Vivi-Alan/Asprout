@@ -292,8 +292,27 @@
     border:2px solid rgba(140,200,255,.45); background:rgba(10,24,44,.5); color:#cfe8ff; font-size:22px;
     display:flex; align-items:center; justify-content:center; }
   #shootHint { position:absolute; right:24px; bottom:120px; color:rgba(143,183,217,.6); font-size:11px; text-align:right; }
-  .touchFade { transition:opacity .5s; }
-  #touchUI.faded #joystickZone, #touchUI.faded #ultZone, #touchUI.faded #shootZone, #touchUI.faded #dashBtnT, #touchUI.faded #shootHint, #touchUI.faded #pauseBtnT { opacity:.15; }
+  /* ===== v4.3 设置面板 ===== */
+  #settingsPanel { position:absolute; left:0; top:0; width:100%; height:100%; z-index:44; display:none;
+    align-items:center; justify-content:center; background:radial-gradient(ellipse at center, rgba(6,16,32,.55), rgba(3,8,16,.7)); }
+  #settingsBox { text-align:left; width:560px; }
+  #settingsBox h1 { text-align:center; margin-bottom:2px; }
+  .setRow { display:flex; align-items:center; gap:14px; margin:14px 0; }
+  .setLabel { color:#b9d4ec; font-size:14px; min-width:190px; }
+  #volSlider { flex:1; accent-color:#3fa9ff; }
+  #keyList { flex:1; display:flex; flex-direction:column; gap:6px; max-height:260px; overflow:auto; }
+  .keyRow { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 10px; border-radius:8px;
+    background:rgba(255,255,255,.05); border:1px solid rgba(120,180,255,.2); }
+  .keyRow .ka { color:#7fa8cc; font-size:12px; }
+  .keyRow .kb { min-width:96px; text-align:center; padding:3px 8px; border-radius:6px; font-size:13px; font-weight:700; cursor:pointer;
+    background:rgba(63,169,255,.18); border:1px solid rgba(63,169,255,.5); color:#dff2ff; }
+  .keyRow .kb.waiting { background:rgba(255,215,106,.2); border-color:#ffd76a; color:#ffd76a; animation:missflash .8s ease-out infinite; }
+  .keyRow .kb.unbound { opacity:.45; }
+  .setConfirm { margin:8px 0; padding:8px 12px; border-radius:8px; background:rgba(255,215,106,.12); border:1px solid rgba(255,215,106,.5);
+    color:#ffe9b0; font-size:13px; display:flex; align-items:center; gap:10px; }
+  .setConfirm button { padding:3px 12px; border-radius:6px; border:none; cursor:pointer; font-size:12px; font-weight:700; }
+  .setConfirm .yes { background:#ffd76a; color:#062036; } .setConfirm .no { background:rgba(255,255,255,.15); color:#cfe8ff; }
+  .keyRow.off { display:none; }   /* 移动端隐藏键位自定义 */
 
   /* ===== v4.2 面板定位（排行榜 / 存档管理） ===== */
   #leaderPanel, #savePanel { position:absolute; left:0; top:0; width:100%; height:100%; z-index:42; display:none;
@@ -331,6 +350,7 @@
         <button class="tfTeamBtn" id="btnLeader">🏆 排行榜</button>
         <button class="tfTeamBtn" id="btnMobile">📱 移动端</button>
         <button class="tfTeamBtn" id="btnSave">💾 存档管理</button>
+        <button class="tfTeamBtn" id="btnSettings" data-i18n="setBtn">⚙️ 设置/Settings</button>
         <button class="tfTeamBtn" id="teamBtn">制作团队</button>
       </div>
     </div>
@@ -492,6 +512,9 @@
     <div class="panel" id="menuPanel">
       <h1>饥饿围城：ALL清除计划</h1>
       <div class="sub">v3.1 · 天冬酰胺酶 vs ALL · 九关双难度策略对抗</div>
+      <div style="text-align:left; margin-bottom:8px">
+        <button class="pbtn ghost" id="backHomeBtn" style="padding:4px 14px; font-size:12px">🏠 返回主页</button>
+      </div>
       <div id="diffTabs">
         <button class="diffTab" id="tabEasy">简单</button>
         <button class="diffTab active" id="tabNormal">普通</button>
@@ -502,6 +525,7 @@
         <button class="pbtn ghost" id="endlessBtn">♾️ 无尽模式</button>
         <button class="pbtn ghost" id="bestiaryBtn">📖 敌人图鉴</button>
         <button class="pbtn ghost" id="tutAgainBtn">📖 再次观看教程</button>
+        <button class="pbtn ghost" id="menuSettingsBtn">⚙️ 设置</button>
       </div>
       <div class="menuHint" id="menuHint">
         操作：<b>WASD/方向键</b> 移动（面朝）· <b>空格/Shift</b> 冲刺（第2关解锁）· <b>J</b>/<b>鼠标左键</b> 射击（第3关解锁，鼠标独立控制方向）· <b>Q</b> 爆发技能<br>
@@ -537,11 +561,12 @@
   <!-- 局中暂停菜单（v4.1） -->
   <div id="pauseMenu" style="display:none">
     <div class="pauseBox">
-      <h2>游戏暂停</h2>
+      <h2 data-i18n="pauseTitle">游戏暂停</h2>
       <div class="pauseBtns">
-        <button class="pBtn active" data-p="resume">继续</button>
-        <button class="pBtn" data-p="restart">重开</button>
-        <button class="pBtn" data-p="quit">退出</button>
+        <button class="pBtn active" data-p="resume" data-i18n="pResume">继续</button>
+        <button class="pBtn" data-p="restart" data-i18n="pRestart">重开</button>
+        <button class="pBtn" data-p="settings" id="pauseSettingsBtn" data-i18n="pSettings">⚙️ 设置</button>
+        <button class="pBtn" data-p="quit" data-i18n="pQuit">退出</button>
       </div>
       <div class="pauseConfirm" id="pauseConfirm" style="display:none">
         <p id="pauseConfirmText"></p>
@@ -563,6 +588,30 @@
     <div id="dashBtnT">💨<br>冲刺</div>
     <div id="pauseBtnT">⏸</div>
   </div>
+
+  <!-- v4.3 全局设置（音量 + 键位自定义） -->
+  <div id="settingsPanel" style="display:none">
+    <div class="panel" id="settingsBox">
+      <h1 data-i18n="setTitle">⚙️ 设置</h1>
+      <div class="sub" data-i18n="setSub">音乐音量与键位自定义 · 自动保存</div>
+      <div class="setRow">
+        <span class="setLabel" data-i18n="setVolume">🎵 音乐音量</span>
+        <input type="range" id="volSlider" min="0" max="100" value="70">
+        <span id="volNum" class="gauge-num">70%</span>
+      </div>
+      <div class="setRow" id="keyBindSection">
+        <span class="setLabel" data-i18n="setKeys">⌨️ 键位设置（点击按键后按新键）</span>
+        <div id="keyList"></div>
+      </div>
+      <div id="keyConfirm" style="display:none" class="setConfirm"></div>
+      <div class="menuBtns"><button class="pbtn ghost" id="setBack" data-i18n="setBack">← 返回</button></div>
+    </div>
+  </div>
+
+  <!-- v4.3 背景音乐 -->
+  <audio id="auTitle" loop preload="auto" src="audio/Title_Music.wav"></audio>
+  <audio id="auLevel" loop preload="auto" src="audio/Level_Music.wav"></audio>
+  <audio id="auGame" loop preload="auto" src="audio/Game_Music.wav"></audio>
 </div>
 
 <script>
@@ -638,7 +687,9 @@ var I18N = {
     saveTitle: '💾 存档管理', saveSub: '管理本地进度、语言与科普标记',
     saveReset: '🗑️ 重置存档', saveBack: '← 返回', saveResetConfirm: '确定重置全部存档？进度、排行榜、语言与科普标记将全部清除！',
     saveInfoFmt: '已通关普通关卡：{c}<br>已通关困难关卡：{h}<br>无尽最高分：{b}',
-    pauseTitle: '游戏暂停', pResume: '继续', pRestart: '重开', pQuit: '退出', pYes: '确认', pNo: '取消',
+    pauseTitle: '游戏暂停', pResume: '继续', pRestart: '重开', pQuit: '退出', pSettings: '⚙️ 设置', pYes: '确认', pNo: '取消',
+    setTitle: '⚙️ 设置', setSub: '音乐音量与键位自定义 · 自动保存', setVolume: '🎵 音乐音量', setKeys: '⌨️ 键位设置（点击按键后按新键）', setBack: '← 返回', setBtn: '⚙️ 设置/Settings',
+    key_up: '上移', key_down: '下移', key_left: '左移', key_right: '右移', key_shoot: '射击', key_dash: '冲刺', key_ult: '大招', key_pause: '暂停',
     pConfirmRestart: '确定重新开始当前{m}？', pConfirmQuit: '确定退出到选关页面？',
     pauseHint: '↑↓ 切换 · Enter 确认 · ESC 关闭',
     winTitle: '治疗成功！', failTitle: '治疗失败',
@@ -687,7 +738,9 @@ var I18N = {
     saveTitle: '💾 Save Manager', saveSub: 'Manage local progress, language & tutorial flag',
     saveReset: '🗑️ Reset Saves', saveBack: '← Back', saveResetConfirm: 'Reset ALL save data? Progress, leaderboard, language and tutorial flag will be wiped!',
     saveInfoFmt: 'Normal cleared: {c}<br>Hard cleared: {h}<br>Endless best: {b}',
-    pauseTitle: 'Game Paused', pResume: 'Resume', pRestart: 'Restart', pQuit: 'Quit', pYes: 'Confirm', pNo: 'Cancel',
+    pauseTitle: 'Game Paused', pResume: 'Resume', pRestart: 'Restart', pQuit: 'Quit', pSettings: '⚙️ Settings', pYes: 'Confirm', pNo: 'Cancel',
+    setTitle: '⚙️ Settings', setSub: 'Music volume & key rebinding · auto-saved', setVolume: '🎵 Music Volume', setKeys: '⌨️ Key Bindings (click a key, then press new key)', setBack: '← Back', setBtn: '⚙️ 设置/Settings',
+    key_up: 'Move Up', key_down: 'Move Down', key_left: 'Move Left', key_right: 'Move Right', key_shoot: 'Shoot', key_dash: 'Dash', key_ult: 'Ultimate', key_pause: 'Pause',
     pConfirmRestart: 'Restart current {m}?', pConfirmQuit: 'Quit to level select?',
     pauseHint: '↑↓ Navigate · Enter Confirm · ESC Close',
     winTitle: 'Treatment Success!', failTitle: 'Treatment Failed',
@@ -794,7 +847,7 @@ function itTxt(it) { return LANG === 'en' ? (it.enTxt || it.txt) : it.txt; }
 var SAVE_KEY = 'all-siege-v2';
 var LEADER_KEY = 'all-siege-leader';
 var PROGRESS = { cleared: [], hard: [] };
-var SETTINGS = { lang: 'zh', seenScience: false };
+var SETTINGS = { lang: 'zh', seenScience: false, mobile: false, keys: null, volume: 70 };
 var LEADER = [];
 var godMode = false;               /* 作弊码 VIVIMYFATHER：无敌模式 */
 var cheatBuffer = '';
@@ -807,16 +860,23 @@ function loadSave() {
     if (d && d.lang) SETTINGS.lang = d.lang;
     if (d && d.seenScience) SETTINGS.seenScience = true;
     if (d && d.mobile) SETTINGS.mobile = true;   /* v4.2 fix：移动端配置持久化 */
+    if (d && d.keys) SETTINGS.keys = d.keys;      /* v4.3 键位自定义 */
+    if (d && d.volume !== undefined) SETTINGS.volume = d.volume;   /* v4.3 音量 */
   } catch (e) {}
   if (SETTINGS.lang === 'en' || SETTINGS.lang === 'zh') LANG = SETTINGS.lang;
   if (SETTINGS.mobile) isMobile = true;          /* 上次处于移动端 → 本次启动沿用 */
+  loadKeys();                                    /* v4.3 应用自定义键位 */
   try { LEADER = JSON.parse(localStorage.getItem(LEADER_KEY)) || []; } catch (e) {}
   LEADER = LEADER.slice(0, 10);
 }
 function save() {
   if (godMode) return;              /* 无敌模式：所有进度写入被拦截 */
   try {
-    localStorage.setItem(SAVE_KEY, JSON.stringify({ cleared: PROGRESS.cleared, hard: PROGRESS.hard, lang: SETTINGS.lang, seenScience: SETTINGS.seenScience, mobile: SETTINGS.mobile }));
+    localStorage.setItem(SAVE_KEY, JSON.stringify({
+      cleared: PROGRESS.cleared, hard: PROGRESS.hard, lang: SETTINGS.lang,
+      seenScience: SETTINGS.seenScience, mobile: SETTINGS.mobile,
+      keys: SETTINGS.keys, volume: SETTINGS.volume     /* v4.3：键位自定义与音量持久化 */
+    }));
   } catch (e) {}
 }
 function saveLeader() { if (godMode) return; try { localStorage.setItem(LEADER_KEY, JSON.stringify(LEADER)); } catch (e) {} }
@@ -843,12 +903,14 @@ function resetAllSave() {
   try { localStorage.removeItem(SAVE_KEY); localStorage.removeItem(LEADER_KEY); localStorage.removeItem(ENDLESS_BEST_KEY); } catch (e) {}
   PROGRESS = { cleared: [], hard: [] };
   LEADER = [];
-  SETTINGS = { lang: 'zh', seenScience: false, mobile: false };   /* 重置恢复桌面端配置 */
+  SETTINGS = { lang: 'zh', seenScience: false, mobile: false, keys: null, volume: 70 };   /* v4.3 重置恢复默认键位与音量 */
   LANG = 'zh';
   godMode = false;
   hideCheatHint();
   if (el.godBadge) el.godBadge.style.display = 'none';
   if (el.tEndless) el.tEndless.classList.add('locked');
+  loadKeys();                        /* 恢复默认键位 */
+  applyVolume();                     /* 恢复默认音量 */
   if (isMobile) exitMobile();   /* 退出移动端并持久化 mobile:false（含锁屏/触控层/按钮文本） */
   applyLang();            /* 语言回退后立即刷新界面文本 */
 }
@@ -977,6 +1039,8 @@ function grabEls() {
    'titleMain','titleSub','cheatHint','godBadge','sciencePanel','sciOk','tutorialPanel','tutStart',
    'leaderPanel','leaderList','leaderReset','leaderBack','savePanel','saveInfo','saveReset','saveBack','saveErrLine',
    'btnLang','btnLeader','btnMobile','btnSave','tutAgainBtn','menuHint',
+   'btnSettings','menuSettingsBtn','backHomeBtn','settingsPanel','volSlider','volNum','keyList','keyConfirm','setBack',
+   'auTitle','auLevel','auGame',
    'touchUI','joystickZone','joyBase','joyKnob','ultZone','ultBtn','shootZone','shootHint','dashBtnT','pauseBtnT','hint'
   ].forEach(function (id) { el[id] = document.getElementById(id); });
 }
@@ -1342,9 +1406,9 @@ function update(dt) {
   if (S.dash.cd > 0) S.dash.cd -= dt;
   if (S.shoot.cd > 0) S.shoot.cd -= dt;
 
-  /* 键盘移动输入 → 覆盖点击目标并记录面朝；松开即停 */
-  var kx = ((keys.KeyD || keys.ArrowRight) ? 1 : 0) - ((keys.KeyA || keys.ArrowLeft) ? 1 : 0);
-  var ky = ((keys.KeyS || keys.ArrowDown) ? 1 : 0) - ((keys.KeyW || keys.ArrowUp) ? 1 : 0);
+  /* 键盘移动输入 → 覆盖点击目标并记录面朝；松开即停（v4.3 支持自定义键位） */
+  var kx = ((keys[BIND.right] || keys.ArrowRight) ? 1 : 0) - ((keys[BIND.left] || keys.ArrowLeft) ? 1 : 0);
+  var ky = ((keys[BIND.down] || keys.ArrowDown) ? 1 : 0) - ((keys[BIND.up] || keys.ArrowUp) ? 1 : 0);
   if (kx || ky) {
     var kl = Math.sqrt(kx * kx + ky * ky);
     p.dirX = kx / kl; p.dirY = ky / kl;
@@ -1496,7 +1560,8 @@ function updateSplits(dt) {
     if (b) {
       var dx = b.x - sp.x, dy = b.y - sp.y, d = Math.sqrt(dx * dx + dy * dy) || 1;
       if (d > 0.001) sp.facingX = dx / d;
-      var step = Math.min(sp.speed * (S.mode === 'endless' ? endlessParams().speedMul : curLevel().speedMul) * enemySpeedMul() * dt, d);   /* 简单 70% */
+      var earlyMul = (S.mode !== 'endless' && S.time > CFG.time - 5) ? 0.75 : 1;   /* v4.3：每关前 5 秒敌人速度 75% */
+      var step = Math.min(sp.speed * (S.mode === 'endless' ? endlessParams().speedMul : curLevel().speedMul) * enemySpeedMul() * earlyMul * dt, d);   /* 简单 70% */
       sp.x += dx / d * step; sp.y += dy / d * step;
     }
     /* 5 秒消散 / 饿死消失（不再分裂） */
@@ -1537,7 +1602,7 @@ function updateSignals(dt) {
         S.flash = 0.44; S.flashColor = '#7fe08a';      /* 全屏闪绿 0.2s（0.44/2.2） */
         for (k = 0; k < S.enemies.length; k++) {
           if (!S.enemies[k].dying && !S.enemies[k].dead) {
-            if (S.enemies[k].isBoss) bossHungerDelta(CFG.signal.gain);
+            if (S.enemies[k].isBoss) bossHungerDelta(CFG.signal.gain + 15);   /* v4.3：Boss 额外 +15（共 25） */
             else S.enemies[k].hunger = Math.min(CFG.enemy.hungerMax, S.enemies[k].hunger + CFG.signal.gain);
           }
         }
@@ -1598,7 +1663,8 @@ function updateEnemies(dt) {
 
     var L = curLevel(), slow = e.hunger > CFG.enemy.slowAt ? CFG.enemy.slowMul : 1;
     var spdMul = S.mode === 'endless' ? endlessParams().speedMul : L.speedMul;
-    var baseSpeed = (e.type === 'normal' ? CFG.enemy.speed : SPECIALS[e.type].speed) * spdMul * enemySpeedMul();   /* 简单：移速 70% */
+    var earlyMul = (S.mode !== 'endless' && S.time > CFG.time - 5) ? 0.75 : 1;   /* v4.3：每关前 5 秒敌人速度 75% */
+    var baseSpeed = (e.type === 'normal' ? CFG.enemy.speed : SPECIALS[e.type].speed) * spdMul * enemySpeedMul() * earlyMul;   /* 简单：移速 70% */
     e.wob += dt * 3;
 
     if (e.type === 'splitter') {
@@ -1855,6 +1921,7 @@ function updateArrows(dt) {
 }
 
 function hitArrow(e, hunger, knock, stun, ar) {
+  if (e.isBoss) bossHungerDelta(2);   /* v4.3：箭矢命中 Boss 额外削减 2 点饥饿（每支箭独立） */
   e.hunger = Math.min(CFG.enemy.hungerMax, e.hunger + hunger);
   if (e.type === 'greedy' && e.stun < 0.5) e.stun = 0.5;   /* 贪婪者：射击中断吸取 0.5s */
   e.stun = Math.max(e.stun, stun);                       /* 硬直 */
@@ -1916,7 +1983,7 @@ function collisions() {
       ring(b.x, b.y, '#ffd76a');
       for (k = 0; k < S.enemies.length; k++) {
         if (!S.enemies[k].dying && !S.enemies[k].dead) {
-          if (S.enemies[k].isBoss) bossHungerDelta(CFG.ball.hungerGain);   /* Boss 饥饿被压制下降 */
+          if (S.enemies[k].isBoss) bossHungerDelta(CFG.ball.hungerGain + 10);   /* v4.3：Boss 额外 +10（共 25） */
           else S.enemies[k].hunger = Math.min(CFG.enemy.hungerMax, S.enemies[k].hunger + CFG.ball.hungerGain);
         }
       }
@@ -2600,44 +2667,56 @@ function showResult() {
 var keys = {};
 document.addEventListener('keydown', function (e) {
   keys[e.code] = true;
-  /* ESC：关闭团队弹窗 / 排行榜 / 存档管理 / 选关返回标题 / 暂停切换 */
+  unlockAudio();   /* v4.3 首次按键解锁音频 */
+  /* 设置面板：重绑按键捕获优先；ESC 关闭 */
+  if (el.settingsPanel.style.display === 'flex') {
+    if (rebindAction) {
+      if (e.code === 'Escape') { rebindAction = null; keyConfirmPending = null; el.keyConfirm.style.display = 'none'; renderKeyList(); e.preventDefault(); }
+      else { doRebind(e.code); }
+      e.preventDefault();
+      return;
+    }
+    if (e.code === 'Escape') { closeSettings(); e.preventDefault(); return; }
+  }
+  /* ESC：关闭团队弹窗 / 排行榜 / 存档管理 / 选关返回标题；无弹窗时继续（暂停键为 ESC 则走下方暂停分支） */
   if (e.code === 'Escape') {
     if (el.teamModal.style.display !== 'none') { el.teamModal.style.display = 'none'; return; }
     if (el.leaderPanel.style.display === 'flex') { el.leaderPanel.style.display = 'none'; return; }
     if (el.savePanel.style.display === 'flex') { el.savePanel.style.display = 'none'; return; }
     if (S.status === 'menu') { showTitle(); return; }   /* v4.2 选关界面 ESC 返回标题 */
-    if (S.status === 'playing') {
-      if (S.paused) {
-        if (pauseConfirmMode) {                       /* 确认框打开时：ESC 先关闭确认框 */
-          pauseConfirmMode = null;
-          el.pauseConfirm.style.display = 'none';
-          pauseFocus = 0;
-          updatePauseFocus();
-        } else resumeGame();
-      } else pauseGame();
-      e.preventDefault();
-    }
+  }
+  /* 暂停键（可自定义，默认 ESC） */
+  if (e.code === BIND.pause && S.status === 'playing') {
+    if (S.paused) {
+      if (pauseConfirmMode) {                       /* 确认框打开时：先关闭确认框 */
+        pauseConfirmMode = null;
+        el.pauseConfirm.style.display = 'none';
+        pauseFocus = 0;
+        updatePauseFocus();
+      } else resumeGame();
+    } else pauseGame();
+    e.preventDefault();
     return;
   }
   /* 标题页键盘导航：↑↓ 切换高亮，Enter/空格 触发；作弊码输入优先（S 键与导航共用不冲突） */
   if (S.status === 'title' || S.status === 'science' || S.status === 'tutorial') {
     handleCheatInput(e.key);   /* 先累积作弊码：任何按键（含 S/W）都进 buffer */
-    if (e.code === 'ArrowUp' || e.code === 'KeyW') { titleFocus = (titleFocus + 2) % 3; updateTitleFocus(); e.preventDefault(); }
-    else if (e.code === 'ArrowDown' || e.code === 'KeyS') { titleFocus = (titleFocus + 1) % 3; updateTitleFocus(); e.preventDefault(); }
+    if (e.code === 'ArrowUp' || e.code === BIND.up) { titleFocus = (titleFocus + 2) % 3; updateTitleFocus(); e.preventDefault(); }
+    else if (e.code === 'ArrowDown' || e.code === BIND.down) { titleFocus = (titleFocus + 1) % 3; updateTitleFocus(); e.preventDefault(); }
     else if (e.code === 'Enter' || e.code === 'Space') { if (S.status === 'title') titleActivate(); e.preventDefault(); }
     return;
   }
   /* 暂停菜单键盘导航 */
   if (S.paused) {
-    if (e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === 'KeyW' || e.code === 'KeyS') {
-      pauseNav((e.code === 'ArrowUp' || e.code === 'KeyW') ? -1 : 1);
+    if (e.code === 'ArrowUp' || e.code === 'ArrowDown' || e.code === BIND.up || e.code === BIND.down) {
+      pauseNav((e.code === 'ArrowUp' || e.code === BIND.up) ? -1 : 1);
       e.preventDefault();
     } else if (e.code === 'Enter' || e.code === 'Space') { pauseActivate(); e.preventDefault(); }
     return;
   }
-  if (e.code === 'Space' || e.code === 'ShiftLeft' || e.code === 'ShiftRight') { e.preventDefault(); tryDash(); }
-  else if (e.code === 'KeyJ') { fireArrow(S.player.dirX, S.player.dirY); }
-  else if (e.code === 'KeyQ') { castSkill(); }
+  if (e.code === BIND.dash || e.code === 'ShiftLeft' || e.code === 'ShiftRight') { e.preventDefault(); tryDash(); }
+  else if (e.code === BIND.shoot) { fireArrow(S.player.dirX, S.player.dirY); }
+  else if (e.code === BIND.ult) { castSkill(); }
   if (['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].indexOf(e.code) >= 0) e.preventDefault();
 });
 document.addEventListener('keyup', function (e) { keys[e.code] = false; });
@@ -2807,7 +2886,7 @@ function spawnBoss() {
     x: 600, y: 220,
     r: baseR * 2,
     collideR: (COLLIDE[type] || COLLIDE.normal) + 8,
-    hunger: 300, hungerMax: 300,
+    hunger: 200, hungerMax: 200,   /* v4.3：Boss 饥饿上限 300 → 200 */
     hp: 200, hpMax: 200,
     vulnerable: false, vulT: 0,
     skillT: 5, teleT: 3, trapT: 2, splitT: 4, fireT: 1.5,
@@ -3074,6 +3153,8 @@ function applyLang() {
   if (el.btnLeader) el.btnLeader.textContent = t('btnLeader');
   if (el.btnMobile) el.btnMobile.textContent = isMobile ? t('btnMobileOff') : t('btnMobile');
   if (el.btnSave) el.btnSave.textContent = t('btnSave');
+  if (el.btnSettings) el.btnSettings.textContent = t('setBtn');
+  if (el.menuSettingsBtn) el.menuSettingsBtn.textContent = t('setBtn');
   if (el.teamBtn) el.teamBtn.textContent = t('teamBtn');
   if (document.getElementById('teamModalTitle')) document.getElementById('teamModalTitle').textContent = t('teamModalTitle');
   if (document.getElementById('teamModalSub')) document.getElementById('teamModalSub').textContent = t('teamModalSub');
@@ -3100,7 +3181,8 @@ function applyLang() {
     var pbs = el.pauseMenu.querySelectorAll('.pauseBtns .pBtn');
     if (pbs[0]) pbs[0].textContent = t('pResume');
     if (pbs[1]) pbs[1].textContent = t('pRestart');
-    if (pbs[2]) pbs[2].textContent = t('pQuit');
+    if (pbs[2]) pbs[2].textContent = t('pSettings');
+    if (pbs[3]) pbs[3].textContent = t('pQuit');
     var ph = el.pauseMenu.querySelector('.pauseHint'); if (ph) ph.textContent = t('pauseHint');
     if (el.pauseYes) el.pauseYes.textContent = t('pYes');
     if (el.pauseNo) el.pauseNo.textContent = t('pNo');
@@ -3171,6 +3253,124 @@ function showSavePanel() {
   if (godMode) info += '<br>🛡️ GOD MODE · ' + t('godBlockSave');
   el.saveInfo.innerHTML = info;
   el.savePanel.style.display = 'flex';
+}
+
+/* ================= v4.3 键位自定义 ================= */
+var KEY_ACTIONS = ['up', 'down', 'left', 'right', 'shoot', 'dash', 'ult', 'pause'];
+var BIND = { up: 'KeyW', down: 'KeyS', left: 'KeyA', right: 'KeyD', shoot: 'KeyJ', dash: 'Space', ult: 'KeyQ', pause: 'Escape' };
+function keyLabel(code) {
+  var m = { KeyW: 'W', KeyA: 'A', KeyS: 'S', KeyD: 'D', Space: 'Space', KeyJ: 'J', KeyQ: 'Q', Escape: 'ESC',
+    ArrowUp: '↑', ArrowDown: '↓', ArrowLeft: '←', ArrowRight: '→', ShiftLeft: 'Shift', ControlLeft: 'Ctrl', Enter: 'Enter' };
+  return m[code] || (code ? code.replace('Key', '').replace('Digit', '') : (LANG === 'zh' ? '未绑定' : 'Unbound'));
+}
+function loadKeys() {
+  var k = SETTINGS.keys;
+  if (k) { for (var key in k) if (BIND[key] !== undefined) BIND[key] = k[key]; }
+  else BIND = { up: 'KeyW', down: 'KeyS', left: 'KeyA', right: 'KeyD', shoot: 'KeyJ', dash: 'Space', ult: 'KeyQ', pause: 'Escape' };   /* 无配置 → 恢复默认 */
+}
+function saveKeys() {
+  SETTINGS.keys = {};
+  for (var i = 0; i < KEY_ACTIONS.length; i++) SETTINGS.keys[KEY_ACTIONS[i]] = BIND[KEY_ACTIONS[i]];
+  save();
+}
+
+/* ================= v4.3 音频系统（三首 BGM 按界面切换） ================= */
+var AUDIO = { title: null, level: null, game: null, current: null };
+var audioUnlocked = false;
+function initAudio() {
+  AUDIO.title = el.auTitle; AUDIO.level = el.auLevel; AUDIO.game = el.auGame;
+  applyVolume();
+}
+function applyVolume() {
+  var v = (SETTINGS.volume === undefined ? 70 : SETTINGS.volume) / 100;
+  if (AUDIO.title) { AUDIO.title.volume = v; AUDIO.level.volume = v; AUDIO.game.volume = v; }
+}
+function musicKey() {
+  if (S.status === 'title' || S.status === 'science' || S.status === 'tutorial' || S.status === 'win' || S.status === 'fail') return 'title';
+  if (S.status === 'menu') return 'level';
+  if (S.status === 'playing' && S.mode === 'endless' && S.endless.phase !== 'fight') return 'level';   /* 无尽三选一/休整 */
+  if (S.status === 'playing') return 'game';
+  return 'title';
+}
+function updateMusic(force) {
+  if (!audioUnlocked) return;
+  var want = musicKey();
+  if (!force && AUDIO.current === want) return;
+  if (AUDIO.current && AUDIO[AUDIO.current]) { try { AUDIO[AUDIO.current].pause(); AUDIO[AUDIO.current].currentTime = 0; } catch (e) {} }
+  AUDIO.current = want;
+  var a = AUDIO[want];
+  if (a) { try { var p = a.play(); if (p && p.catch) p.catch(function () {}); } catch (e) {} }
+}
+function unlockAudio() {
+  if (audioUnlocked) return;
+  audioUnlocked = true;
+  updateMusic(true);
+}
+
+/* ================= v4.3 全局设置面板（音量 + 键位） ================= */
+var rebindAction = null;
+var keyConfirmPending = null;
+function openSettings() {
+  el.settingsPanel.style.display = 'flex';
+  el.volSlider.value = SETTINGS.volume === undefined ? 70 : SETTINGS.volume;
+  el.volNum.textContent = el.volSlider.value + '%';
+  renderKeyList();
+}
+function closeSettings() {
+  el.settingsPanel.style.display = 'none';
+  rebindAction = null; keyConfirmPending = null;
+  el.keyConfirm.style.display = 'none';
+}
+function renderKeyList() {
+  el.keyList.innerHTML = '';
+  for (var i = 0; i < KEY_ACTIONS.length; i++) {
+    var a = KEY_ACTIONS[i];
+    var row = document.createElement('div');
+    row.className = 'keyRow' + (isMobile ? ' off' : '');   /* 移动端不显示键位自定义 */
+    var ka = document.createElement('span'); ka.className = 'ka'; ka.textContent = t('key_' + a);
+    var kb = document.createElement('span'); kb.className = 'kb' + (rebindAction === a ? ' waiting' : '') + (BIND[a] ? '' : ' unbound');
+    kb.textContent = rebindAction === a ? (LANG === 'zh' ? '按下新键…' : 'Press new key…') : keyLabel(BIND[a]);
+    kb.addEventListener('click', (function (act) { return function () {
+      if (isMobile) return;
+      rebindAction = act; keyConfirmPending = null; el.keyConfirm.style.display = 'none';
+      renderKeyList();
+    }; })(a));
+    row.appendChild(ka); row.appendChild(kb);
+    el.keyList.appendChild(row);
+  }
+}
+function doRebind(code) {
+  if (!rebindAction) return;
+  if (keyConfirmPending) return;   /* 冲突确认框显示中：忽略新输入，等玩家确认 */
+  var act = rebindAction;
+  var conflict = null;
+  for (var i = 0; i < KEY_ACTIONS.length; i++) if (KEY_ACTIONS[i] !== act && BIND[KEY_ACTIONS[i]] === code) conflict = KEY_ACTIONS[i];
+  if (conflict) {
+    keyConfirmPending = { action: act, code: code, conflict: conflict };
+    el.keyConfirm.innerHTML =
+      (LANG === 'en' ? ('Key "' + keyLabel(code) + '" is used by "' + t('key_' + conflict) + '". Replace it? ') : ('按键「' + keyLabel(code) + '」已被「' + t('key_' + conflict) + '」占用，是否替换？')) +
+      '<button class="yes" id="kcYes">' + (LANG === 'zh' ? '替换' : 'Replace') + '</button><button class="no" id="kcNo">' + (LANG === 'zh' ? '取消' : 'Cancel') + '</button>';
+    el.keyConfirm.style.display = 'flex';
+    document.getElementById('kcYes').addEventListener('click', function () { confirmRebind(true); });
+    document.getElementById('kcNo').addEventListener('click', function () { confirmRebind(false); });
+    return;
+  }
+  BIND[act] = code;
+  rebindAction = null;
+  saveKeys();
+  renderKeyList();
+}
+function confirmRebind(ok) {
+  if (!keyConfirmPending) return;
+  if (ok) {
+    var p = keyConfirmPending;
+    BIND[p.action] = p.code;
+    BIND[p.conflict] = null;   /* 被替换的动作清空（显示未绑定） */
+    saveKeys();
+  }
+  keyConfirmPending = null; rebindAction = null;
+  el.keyConfirm.style.display = 'none';
+  renderKeyList();
 }
 
 /* ================= v4.2 作弊码 ================= */
@@ -3328,7 +3528,7 @@ function titleActivate() {
 
 /* ================= v4.1 局中暂停 ================= */
 var pauseFocus = 0;
-var PAUSE_ACTIONS = ['resume', 'restart', 'quit'];
+var PAUSE_ACTIONS = ['resume', 'restart', 'settings', 'quit'];
 var pauseConfirmMode = null;
 function pauseGame() {
   if (S.status !== 'playing' || S.paused) return;
@@ -3375,6 +3575,7 @@ function pauseActivate() {
   }
   var a = PAUSE_ACTIONS[pauseFocus];
   if (a === 'resume') { resumeGame(); }
+  else if (a === 'settings') { openSettings(); }   /* v4.3 暂停菜单进入设置 */
   else {
     pauseConfirmMode = a;
     el.pauseConfirmText.textContent = (a === 'restart') ? t('pConfirmRestart').replace('{m}', S.mode === 'endless' ? '无尽模式' : '关卡') : t('pConfirmQuit');
@@ -3385,7 +3586,7 @@ function pauseActivate() {
 }
 function pauseNav(d) {
   if (pauseConfirmMode) { pauseFocus = (pauseFocus + d + 2) % 2; updatePauseFocus(); return; }
-  pauseFocus = (pauseFocus + d + 3) % 3;
+  pauseFocus = (pauseFocus + d + 4) % 4;
   updatePauseFocus();
 }
 
@@ -3406,6 +3607,7 @@ function loop(ts) {
     if (touchIdle >= 300) { el.touchUI.classList.add('faded'); touchIdle = 0; }
   }
   updateTouchUI();                    /* 触控层只在局内显示 */
+  updateMusic();                      /* v4.3 按界面切换背景音乐 */
   requestAnimationFrame(loop);
 }
 
@@ -3413,6 +3615,7 @@ function loop(ts) {
 grabEls();
 loadSave();
 loadImages();
+initAudio();                       /* v4.3 音频系统初始化 */
 applyLang();                       /* v4.2 应用已保存语言 */
 el.dashBtn.addEventListener('click', tryDash);
 el.shootBtn.addEventListener('click', function () { fireArrow(S.player.dirX, S.player.dirY); });
@@ -3437,6 +3640,17 @@ el.btnLang.addEventListener('click', function () { setLang(LANG === 'zh' ? 'en' 
 el.btnLeader.addEventListener('click', showLeader);
 el.btnMobile.addEventListener('click', function () { if (isMobile) exitMobile(); else enterMobile(); });
 el.btnSave.addEventListener('click', showSavePanel);
+/* v4.3 设置面板入口（标题页 / 选关界面）+ 音量滑条 + 返回主页 */
+el.btnSettings.addEventListener('click', openSettings);
+el.menuSettingsBtn.addEventListener('click', openSettings);
+el.setBack.addEventListener('click', closeSettings);
+el.backHomeBtn.addEventListener('click', function () { showTitle(); });   /* v4.3 选关返回主页 */
+el.volSlider.addEventListener('input', function () {
+  SETTINGS.volume = parseInt(el.volSlider.value, 10);
+  el.volNum.textContent = SETTINGS.volume + '%';
+  applyVolume();
+  save();
+});
 /* 排行榜 / 存档管理（含二次确认） */
 var leaderConfirmT = 0, saveConfirmT = 0;
 el.leaderBack.addEventListener('click', function () { el.leaderPanel.style.display = 'none'; });
@@ -3559,12 +3773,14 @@ document.getElementById('titleBg').addEventListener('mousemove', function (e) {
   pbs[0].addEventListener('click', resumeGame);
   pbs[1].addEventListener('click', function () { pauseFocus = 1; pauseActivate(); });
   pbs[2].addEventListener('click', function () { pauseFocus = 2; pauseActivate(); });
+  pbs[3].addEventListener('click', function () { pauseFocus = 3; pauseActivate(); });
   for (var i = 0; i < pbs.length; i++) (function (idx) {
     pbs[idx].addEventListener('mouseenter', function () { pauseFocus = idx; updatePauseFocus(); });
   })(i);
   el.pauseYes.addEventListener('click', function () { pauseFocus = 0; pauseActivate(); });
   el.pauseNo.addEventListener('click', function () { pauseFocus = 1; pauseActivate(); });
 })();
+document.addEventListener('click', unlockAudio);   /* v4.3 首次点击解锁音频（自动播放策略） */
 curLevelN = 1;
 maybeShowIntro();   /* v4.2 fix：启动直接进标题页；教程在点击第 1 关时触发 */
 if (SETTINGS.mobile) lockLandscape();   /* 上次移动端配置 → 沿用（停留在标题页） */

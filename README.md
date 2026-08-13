@@ -5,7 +5,7 @@
 
 ## 运行方式
 
-**双击打开 `index.html` 即可**（单文件 + `img/` 素材，零外部依赖）。进度、语言、科普标记与无尽最高分通过 `localStorage` 持久化。
+**双击打开 `index.html` 即可**（单文件 + `img/` 素材，零外部依赖）。进度、语言、科普标记与无尽最高分通过 `localStorage` 持久化。或使用网页版https://vivi-alan.github.io/Asprout/
 
 ## v4.2 新增
 
